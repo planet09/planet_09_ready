@@ -1,0 +1,16 @@
+default:
+
+  selector: textarea
+  language: ko
+  uploadimage_default_img_class: img-fluid
+  paste_data_images: true
+  toolbar: styleselect | bold italic | undo redo | table | forecolor | backcolor | link
+  plugins:
+    - table
+    - image
+    - link
+    - textcolor
+    - colorpicker
+    - wordcount
+    - uploadimage
+    - paste

@@ -1,0 +1,5 @@
+<h1>email 입력해</h1>
+<%=simple_form_for(current_user, url: users_info_path) do |f|%>
+<%= f.input :email, autofucus: true %>
+<%= f.submit '제출', class: 'btn btn-primary' %>
+<% end %>

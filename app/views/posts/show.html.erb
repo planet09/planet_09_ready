@@ -1,0 +1,106 @@
+<h1>글 봐!!</h1>
+<%= @post.id %>번째 글
+<%= @post.title %>
+<%= @post.content.html_safe %>
+<!-- 글이 아래로 내려감 -->
+<%=image_tag @post.img%>
+<%=image_tag @post.img.thumb_fit.url %>
+<%=image_tag @post.img.thumb_fill.url%>
+<% if can? :edit, @post %>
+  <%= link_to '수정하기', edit_post_path(@post) %>
+<% end %>
+<% if can? :destroy, @post %>
+  <%= link_to '삭제하기',
+                      @post,
+                      method: :delete,
+                      data: {confirm: '너지울거야?'} %>
+<% end %>
+<hr />
+
+<form action="/posts/<%= @post.id%>/comments" method="post" data-remote=true>
+  <input type="text" name="content" /><br />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" />
+</form>
+<hr />
+
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <p>
+      <%= comment.content %>
+      <%= link_to '댓글 삭제하기', destroy_comment_path(comment.id), remote: true, method: :delete, class:"delete_comment" %>
+    </p>
+    <hr />
+  <% end %>
+</div>
+
+<script>
+  $('form').on('ajax:success', function() {
+    $('input[name="content"]').val('');
+  });
+</script>
+
+<!--script>
+  $('input[type="submit"]').on('click', function(e) {
+    e.preventDefault();
+    alert('start!');
+    $.ajax({
+      url: $('form').attr('action'),
+      type: "POST",
+      data: {content: $('input[name="content"]').val(),
+            authenticity_token: $('[name="csrf-token"]').attr('content')},
+      dataType: 'script',
+      success: function(){
+        alert('success')
+        $('input[name="content"]').val('');
+      },
+      error: function(){
+        alert('fail!');
+      }
+    });
+  });
+
+  $('.delete_comment').on('click', function(e) {
+    e.preventDefault();
+    alert("start_delete");
+    $.ajax({
+      url: this.href,
+      type: "DELETE",
+      data: {authenticity_token: $('[name="csrf-token"]').attr('content')},
+      dataType: "script",
+      success: function() {
+        alert("delete_complete!");
+      },
+      error: function() {
+        alert("delete_error!");
+      }
+    });
+  });
+
+</script-->
+
+
+<!--script>
+$('input[type="submit"]').on('click', function(e) {
+  var response = confirm("정말 제출하실 건가요?");
+  if (!response) {
+    //이 코드가 실행되려면 response==false
+    //e.preventDefault(); //submit 되는 걸 막아준다.
+    return false;
+  } else {
+    // e.stopImmediatePropagation(); 동일한 element에 있는 다른 이벤트들 발생 x
+  }
+});
+
+function checkContentLen(e) {
+  var content = $('input[name="content"]').val();
+  if (content.length < 10) {
+    alert('10글자 이상 작성해 주세요');
+    return false;
+  } else {
+    alert('참 잘했어요!');
+  }
+}
+
+$('input[type="submit"]').on("click", checkContentLen);
+</script-->

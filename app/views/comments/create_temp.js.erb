@@ -1,0 +1,4 @@
+var a = "<p><%= j(@comment.content) %>"
+var b = "<%= j(link_to '댓글 삭제하기', destroy_comment_path(@comment.id), method: :delete, remote: true, class: 'delete_comment') %>"
+var c = "</p><hr />"
+$("div#comments").append(a+b+c);

@@ -1,0 +1,7 @@
+var like_btn = $('a[data-id=<%=@post_id%>]');
+like_btn.next().text(<%=Post.find(@post_id).liked_users.count%>);
+like_btn.replaceWith(`
+  <%= link_to "posts/#{@post_id}/like", data: {id: @post_id}, remote: true, method: :delete do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+  `);

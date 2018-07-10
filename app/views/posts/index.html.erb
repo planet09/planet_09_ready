@@ -1,0 +1,22 @@
+<%= link_to '글쓰기', new_post_path, class: "btn btn-warning" %>
+<% @posts.each do |post| %>
+  <p>작성자 : <%= post.user.email %></p>
+  <p><%= post.id %>번째 글</p>
+  <p>제목 : <%= post.title %></p>
+  <p>내용 : <%= post.content.html_safe %></p>
+  <%= link_to '글보기', post, class: "btn btn-primary" %>
+    <% if current_user and current_user.liked_posts.include? post %>
+        <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+    <% else %>
+        <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+    <% end %>
+    <span><%= post.liked_users.count %></span>
+  <hr />
+<% end %>
+<div class="d-flex justify-content-center">
+  <%= paginate @posts %>
+</div>
