@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :banks
+  resources :orders
+  resources :tags
+  resources :projects
   get 'tinymce_assets/create'
 
   devise_for :users, controllers: {

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  o_id: MyString
+  del_addr: MyString
+  detail_addr: MyString
+  post_code: MyString
+  total_pay: 1
+  del_pay: 1
+  or_time: 2018-07-11 06:28:24
+  pay_time: 2018-07-11 06:28:24
+  amount: 1
+  invoice_code: MyString
+
+two:
+  o_id: MyString
+  del_addr: MyString
+  detail_addr: MyString
+  post_code: MyString
+  total_pay: 1
+  del_pay: 1
+  or_time: 2018-07-11 06:28:24
+  pay_time: 2018-07-11 06:28:24
+  amount: 1
+  invoice_code: MyString

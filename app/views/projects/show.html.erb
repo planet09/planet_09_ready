@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>P:</strong>
+  <%= @project.p_id %>
+</p>
+
+<p>
+  <strong>P name:</strong>
+  <%= @project.p_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @project.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @project.end_date %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @project.account %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @project.goal %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @project.price %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @project.body %>
+</p>
+
+<p>
+  <strong>Option:</strong>
+  <%= @project.option %>
+</p>
+
+<p>
+  <strong>Rel project1 url:</strong>
+  <%= @project.rel_project1_url %>
+</p>
+
+<p>
+  <strong>Rel project2 url:</strong>
+  <%= @project.rel_project2_url %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @project.comment %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

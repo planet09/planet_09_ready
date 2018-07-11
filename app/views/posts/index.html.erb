@@ -1,22 +1,33 @@
-<%= link_to '글쓰기', new_post_path, class: "btn btn-warning" %>
+
+<!-- card deck -->
+<%= link_to '내 플래닛 만들기!', new_post_path, class: "btn btn-warning" %>
 <% @posts.each do |post| %>
-  <p>작성자 : <%= post.user.email %></p>
-  <p><%= post.id %>번째 글</p>
-  <p>제목 : <%= post.title %></p>
-  <p>내용 : <%= post.content.html_safe %></p>
-  <%= link_to '글보기', post, class: "btn btn-primary" %>
-    <% if current_user and current_user.liked_posts.include? post %>
-        <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-    <% else %>
-        <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
-          <i class="far fa-heart"></i>
-        <% end %>
-    <% end %>
-    <span><%= post.liked_users.count %></span>
-  <hr />
-<% end %>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">제목 : <%= post.title %></h5>
+      <p class="card-text"><%= post.content.html_safe %></p>
+    </div>
+    <%= link_to '글보기', post, class: "btn btn-primary" %>
+      <% if current_user and current_user.liked_posts.include? post %>
+          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+      <% else %>
+          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+      <% end %>
+      <span><%= post.liked_users.count %></span>
+    <hr />
+  <% end %>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
 <div class="d-flex justify-content-center">
   <%= paginate @posts %>
 </div>
+<!-- card deck end -->

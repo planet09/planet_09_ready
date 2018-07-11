@@ -1,0 +1,26 @@
+
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :p_id %>
+    <%= f.input :p_name %>
+    <%= f.input :description %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :account %>
+    <%= f.input :goal %>
+    <%= f.input :price %>
+    <%= f.input :body %>
+    <%= f.input :option %>
+    <%= f.input :rel_project1_url %>
+    <%= f.input :rel_project2_url %>
+    <%= f.association :comment %>
+    <%= f.association :user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

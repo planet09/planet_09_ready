@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180710042548) do
+ActiveRecord::Schema.define(version: 20180711062910) do
+
+  create_table "banks", force: :cascade do |t|
+    t.string   "bank_id"
+    t.string   "bank_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -38,6 +45,21 @@ ActiveRecord::Schema.define(version: 20180710042548) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "o_id"
+    t.string   "del_addr"
+    t.string   "detail_addr"
+    t.string   "post_code"
+    t.integer  "total_pay"
+    t.integer  "del_pay"
+    t.datetime "or_time"
+    t.datetime "pay_time"
+    t.integer  "amount"
+    t.string   "invoice_code"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -46,6 +68,38 @@ ActiveRecord::Schema.define(version: 20180710042548) do
     t.datetime "updated_at", null: false
     t.string   "img"
   end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "p_id"
+    t.string   "p_name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "account"
+    t.integer  "goal"
+    t.integer  "price"
+    t.text     "body"
+    t.string   "option"
+    t.string   "rel_project1_url"
+    t.string   "rel_project2_url"
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "projects", ["comment_id"], name: "index_projects_on_comment_id"
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "tag_id"
+    t.text     "content"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["project_id"], name: "index_tags_on_project_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
