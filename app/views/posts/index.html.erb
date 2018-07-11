@@ -1,33 +1,34 @@
 
-<!-- card deck -->
-<%= link_to '내 플래닛 만들기!', new_post_path, class: "btn btn-warning" %>
+<div class="row my-5">
 <% @posts.each do |post| %>
-<div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">제목 : <%= post.title %></h5>
-      <p class="card-text"><%= post.content.html_safe %></p>
+<div class="card col-lg-3 col-md-4 col-sm-6" style="width: 18rem;">
+  <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
+  <div class="card-body text-center">
+    <div class="progress" style="height: 3px;">
+      <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
+    <% if current_user and current_user.liked_posts.include? post %>
+        <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+    <% else %>
+        <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+    <% end %>
+    <span><%= post.liked_users.count %></span>
+    <h5 class="card-title"><%= post.title %></h5>
+    <p class="card-text"> <%= post.user.email %> </p>
+    <p class="card-text"><%= post.content.html_safe %></p>
+
     <%= link_to '글보기', post, class: "btn btn-primary" %>
-      <% if current_user and current_user.liked_posts.include? post %>
-          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
-      <% else %>
-          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
-            <i class="far fa-heart"></i>
-          <% end %>
-      <% end %>
-      <span><%= post.liked_users.count %></span>
-    <hr />
-  <% end %>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
   </div>
+</div>
+<% end %>
+</div>
+<div class="text-center mt-3">
+  <%= link_to '글쓰기', new_post_path, class: "btn btn-warning" %>
 </div>
 <div class="d-flex justify-content-center">
   <%= paginate @posts %>
 </div>
-<!-- card deck end -->
