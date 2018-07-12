@@ -1,35 +1,33 @@
 source 'https://rubygems.org'
 
 
-#파일업로드
-gem 'carrierwave', '~> 1.0'
-#이미지 조작
-gem "mini_magick"
-gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'aws-sdk-s3'
 
-gem 'aws-sdk'
-
-#환경변수설정
+# 언어설정
+gem 'rails-i18n', '~> 4.0'
+gem 'devise-i18n'
+# 환경변수 관리
 gem 'figaro'
-#cloud service
-gem 'fog'
-
-#회원관리
+# 회원관리
 gem 'devise'
 gem 'cancancan', '~> 2.0'
 gem 'omniauth-facebook'
-
 gem 'omniauth-kakao', :git => 'https://github.com/hcn1519/omniauth-kakao'
-
-gem 'tinymce-rails'
+# 게시판
 gem 'kaminari'
 gem 'simple_form'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-gem 'pry-rails'
-#language
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 
+# gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+# 파일업로드
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem 'fog' # cloud service
+
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'pry-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.10'
 # Use sqlite3 as the database for Active Record
