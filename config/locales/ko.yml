@@ -8,9 +8,9 @@ ko:
           has_many: "%{record}가 존재하기 때문에 삭제할 수 없습니다"
     attributes:
       post:
-        title: 제목
+        title: Planet Title
         content: 내용
-        img: 첨부이미지
+        img: 메인 이미지를 선택해주세요
         user_id: 글쓴이
       user:
         password: 비밀번호
