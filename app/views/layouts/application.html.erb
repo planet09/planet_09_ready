@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BoardGem</title>
+  <title>Planet09 - 공구플랫폼</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 </head>
-<body>
-<!-- <%#= gravatar(current_user) %> -->
-<% flash.each do |key, value| %>
-  <div class="<%= flash_message(key) %>" role="alert">
-    <%= value %>
-  </div>
-<% end %>
+<body class = "container">
+  <!-- header -->
+  <header>
+    <div class="row" id="banner">
+      <div class= "col my-auto">
+        <h1 id = "logo">Planet09</h1>
+      </div>
+      <!-- <div class="col-6 my-auto d-flex justify-content-center"> -->
+        <form class="form-inline row col-5">
+            <input class="form-control mr-sm-2 col" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-outline-dark my-2 my-sm-0 col-2" type="submit">Search</button>
+        </form>
+      <!-- </div> -->
+      <div class="col my-auto text-center">
+        <!-- <%#= gravatar(current_user) %> -->
+        <% flash.each do |key, value| %>
+          <div class="<%= flash_message(key) %>" role="alert">
+            <%= value %>
+          </div>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <%= image_tag current_user.profile_img, class: "rounded-circle profile-img"%>
+          <span><%= current_user.email %></span>
+          <%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <!-- <a href="/users/sign_in">로그인</a> -->
+          <%= link_to '로그인', new_user_session_path %>
+          <!-- <a href="/users/sign_up">회원가입</a> -->
+          <%= link_to '회원가입', new_user_registration_path %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </header>
 
 
-<% if user_signed_in? %>
-<%= image_tag current_user.profile_img, class: "rounded-circle"%>
-  <span><%= current_user.email %></span>
-  <%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
-<% else %>
-  <!-- <a href="/users/sign_in">로그인</a> -->
-  <%= link_to '로그인', new_user_session_path %>
-  <!-- <a href="/users/sign_up">회원가입</a> -->
-  <%= link_to '회원가입', new_user_registration_path %>
-<% end %>
 <!-- nav bar -->
-<nav   class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-
- <a class="navbar-brand" href="#">Planet☆</a>
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon"></span>
- </button>
-
- <div class="collapse navbar-collapse " id="navbarSupportedContent">
-   <ul class="navbar-nav mr-auto">
-     <li class="nav-item active">
-       <a class="nav-link" href="posts#index">Home<span class="sr-only">(current)</span></a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link" href="#">Link</a>
-     </li>
-     <li class="nav-item dropdown">
-       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Dropdown
-       </a>
-       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-         <a class="dropdown-item" href="#">Action</a>
-         <a class="dropdown-item" href="#">Another action</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#">Something else here</a>
-       </div>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link disabled" href="#">Disabled</a>
-     </li>
-   </ul>
-   <form class="form-inline my-2 my-lg-0">
-     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-   </form>
- </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+   <a class="navbar-brand" href="#">Navbar</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+     <div class="navbar-nav">
+       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+       <a class="nav-item nav-link" href="#">Features</a>
+       <a class="nav-item nav-link" href="#">Pricing</a>
+       <a class="nav-item nav-link disabled" href="#">Disabled</a>
+     </div>
+   </div>
 </nav>
+
 <!-- nav bar end -->
 
 <div class="container">
