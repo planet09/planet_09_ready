@@ -8,14 +8,18 @@ ko:
           has_many: "%{record}가 존재하기 때문에 삭제할 수 없습니다"
     attributes:
       post:
-        title: Planet Title
-        content: 내용
+        title: 플래닛 타이틀
+        content: 플래닛 상세소개
         img: 메인 이미지를 선택해주세요
-        user_id: 글쓴이
+        user_id: 작성자
+        description: 플래닛 한줄 소개를 작성해주세요
       user:
         password: 비밀번호
         password_confirmation: 비밀번호 확인
         name: 이름
+      tag:
+        content: asdf
+
 
   date:
     abbr_day_names:

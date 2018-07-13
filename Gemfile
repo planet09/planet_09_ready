@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+
 gem 'aws-sdk-s3'
 
 # 언어설정
