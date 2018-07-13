@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :banks
   resources :orders
   resources :tags
-  resources :projects
   get 'tinymce_assets/create'
 
   devise_for :users, controllers: {
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   put '/posts/:post_id/like' => 'likes#create'
   delete '/posts/:post_id/like' => 'likes#destroy'
   post '/posts/:post_id/comments' => 'comments#create'
-  delete '/comments/:comment_id' => 'comments#destroy', as: 'destroy_comment'
+  delete '/comments/:id' => 'comments#destroy', as: 'destroy_comment'
 
   post '/tinymce_assets' => 'tinymce_assets#create'
 

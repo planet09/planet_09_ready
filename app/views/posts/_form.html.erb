@@ -8,6 +8,12 @@
 <%= simple_form_for @post, html:{multipart: true} do |f| %>
   <%= f.error_notification %>
   <%= f.input :title %>
+
+  <%= f.input :start_date, as: :date, start_year: Date.today.year - 90, discard_day: true,
+                             order: [:month, :year] %>
+  <%= f.input :end_date, as: :date, end_year: Date.today.year - 12, discard_day: true,
+                            order: [:month, :year] %>
+
   <%= f.input :content, class: "tinymce", rows:40, cols: 120 %>
   <%=tinymce%>
   <%=f.input :img %>
