@@ -11,9 +11,9 @@
   <%= f.input :description %>
   <%=f.input :img %>
   <div class="row">
-    <div class="col"><%= f.input :start_date, as: :date, start_year: Date.today.year - 90, discard_day: true,
+    <div class="col"><%= f.input :start_date, as: :date, start_year: Date.today.year - 90,
                                order: [:year, :month, :day] %></div>
-    <div class="col">  <%= f.input :end_date, as: :date, start_year: Date.today.year, discard_day: true,
+    <div class="col">  <%= f.input :end_date, as: :date, start_year: Date.today.year,
                                 order: [:year, :month, :day] %></div>
   </div>
 
