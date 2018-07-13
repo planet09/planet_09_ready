@@ -1,9 +1,8 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.string :p_id
       t.string :title
-      t.text :description
+      t.string :description
       #t.integer :user_id
       t.date :start_date
       t.date :end_date

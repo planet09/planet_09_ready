@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712071235) do
+ActiveRecord::Schema.define(version: 20180713053911) do
 
   create_table "banks", force: :cascade do |t|
     t.string   "bank_id"
@@ -61,9 +61,8 @@ ActiveRecord::Schema.define(version: 20180712071235) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "p_id"
     t.string   "title"
-    t.text     "description"
+    t.string   "description"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "account"
@@ -81,15 +80,24 @@ ActiveRecord::Schema.define(version: 20180712071235) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
-  create_table "tags", force: :cascade do |t|
-    t.string   "tag_id"
-    t.text     "content"
-    t.integer  "project_id"
+  create_table "posts_tags", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "tags", ["project_id"], name: "index_tags_on_project_id"
+  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id"
+  add_index "posts_tags", ["tag_id"], name: "index_posts_tags_on_tag_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["post_id"], name: "index_tags_on_post_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

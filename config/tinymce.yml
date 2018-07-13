@@ -1,6 +1,5 @@
 default:
-
-  selector: textarea
+  selector: textarea#post_content
   language: ko
   uploadimage_default_img_class: img-fluid
   paste_data_images: true

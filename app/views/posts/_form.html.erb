@@ -8,25 +8,26 @@
 <%= simple_form_for @post, html:{multipart: true} do |f| %>
   <%= f.error_notification %>
   <%= f.input :title %>
-
-  <%= f.input :start_date, as: :date, start_year: Date.today.year - 90, discard_day: true,
-                             order: [:month, :year] %>
-  <%= f.input :end_date, as: :date, end_year: Date.today.year - 12, discard_day: true,
-                            order: [:month, :year] %>
-
-  <%= f.input :content, class: "tinymce", rows:40, cols: 120 %>
-  <%=tinymce%>
+  <%= f.input :description %>
   <%=f.input :img %>
+  <div class="row">
+    <div class="col"><%= f.input :start_date, as: :date, start_year: Date.today.year - 90, discard_day: true,
+                               order: [:year, :month, :day] %></div>
+    <div class="col">  <%= f.input :end_date, as: :date, start_year: Date.today.year, discard_day: true,
+                                order: [:year, :month, :day] %></div>
+  </div>
+
+  <%= f.input :content, class: "editor", rows:40, cols: 120 %>
+  <%= simple_fields_for :tags do |t| %>
+    <%= t.input :content, label: '해시태그를 입력해주세요 ( ex. #방탄소년단 #야광봉 #티셔츠 )' %>
+  <% end %>
+  <%=tinymce%>
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>
 
-<!--마저 수정할것~
- <script>
+<!-- 마저 수정할것~ -->
+ <!-- <script>
   tinyMCE.init({
-    selector: 'textarea.tinymce',
-    editor_selector: 'tinymce',
-    plugin:[],
-    toolbar:
-
-  }])
-</script> -->
+    selector: 'textarea#post_content'
+  }); -->
+<!-- </script> -->
