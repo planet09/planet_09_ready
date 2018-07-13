@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180711062910) do
+ActiveRecord::Schema.define(version: 20180712071235) do
 
   create_table "banks", force: :cascade do |t|
     t.string   "bank_id"
@@ -61,35 +61,25 @@ ActiveRecord::Schema.define(version: 20180711062910) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "img"
-  end
-
-  create_table "projects", force: :cascade do |t|
     t.string   "p_id"
-    t.string   "p_name"
+    t.string   "title"
     t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "account"
     t.integer  "goal"
     t.integer  "price"
-    t.text     "body"
+    t.text     "content"
     t.string   "option"
     t.string   "rel_project1_url"
     t.string   "rel_project2_url"
-    t.integer  "comment_id"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "img"
   end
 
-  add_index "projects", ["comment_id"], name: "index_projects_on_comment_id"
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "tag_id"
