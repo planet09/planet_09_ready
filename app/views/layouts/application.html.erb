@@ -12,6 +12,11 @@
 <body class = "container">
   <!-- header -->
   <header>
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_message(key) %>" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
     <div class="row" id="banner">
       <div class= "col my-auto">
         <h1 id = "logo">Planet09</h1>
@@ -24,11 +29,6 @@
       <!-- </div> -->
       <div class="col my-auto text-center">
         <!-- <%#= gravatar(current_user) %> -->
-        <% flash.each do |key, value| %>
-          <div class="<%= flash_message(key) %>" role="alert">
-            <%= value %>
-          </div>
-        <% end %>
 
         <% if user_signed_in? %>
         <%= image_tag current_user.profile_img, class: "rounded-circle profile-img"%>
@@ -51,8 +51,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light row">
    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
      <div class="navbar-nav">
-       <a class="navbar-brand col" href="#">홈으로</a>
-       <a class="nav-item nav-link" href="#">플래닛개설하기</a>
+       <%= link_to '홈으로', root_path	, class: "nav-item nav-link" %>
+       <%= link_to '플래닛개설하기', new_post_path, class: "nav-item nav-link" %>
        <a class="nav-item nav-link" href="#">공구둘러보기</a>
        <a class="nav-item nav-link" href="#">서포트둘러보기</a>
        <a class="nav-item nav-link" href="#">랭킹보기</a>

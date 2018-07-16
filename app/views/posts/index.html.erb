@@ -1,14 +1,85 @@
 
-<div class="row my-1 top_div">
-  <div class="col top_img">
-    <%= image_tag @posts.find(1).img.thumb_fill.url, style: "width: 100%"%>
-    <div class="bottom-left">Bottom Left</div>
+
+<!-- home ranking -->
+<div class="row my-5">
+  <div id="carouselExampleIndicators" class="carousel slide col" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag @posts.first.img.thumb_fill.url, class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+           <h5>랭킹 1위</h5>
+           <p>#태그#태그#태그#태그#태그#태그</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag @posts.first.img.thumb_fill.url, class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+           <h5>랭킹 1위</h5>
+           <p>#태그#태그#태그#태그#태그#태그</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag @posts.first.img.thumb_fill.url, class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+           <h5>랭킹 1위</h5>
+           <p>#태그#태그#태그#태그#태그#태그</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <div class="col top_img">
-    <%= image_tag @posts.find(1).img.thumb_fill.url, style: "width: 100%"%>
-    <div class="bottom-left">Bottom Left</div>
+  <div id="carouselExampleIndicators" class="carousel slide col" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="3" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag @posts.first.img.thumb_fill.url, class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+           <h5>랭킹 1위</h5>
+           <p>#태그#태그#태그#태그#태그#태그</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag @posts.first.img.thumb_fill.url, class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+           <h5>랭킹 1위</h5>
+           <p>#태그#태그#태그#태그#태그#태그</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag @posts.first.img.thumb_fill.url, class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+           <h5>랭킹 1위</h5>
+           <p>#태그#태그#태그#태그#태그#태그</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
 </div>
+
 
 <div class="row">
 <% @posts.each do |post| %>
@@ -39,9 +110,6 @@
 
 
 <% end %>
-</div>
-<div class="text-center mt-3">
-  <%= link_to '글쓰기', new_post_path, class: "btn btn-warning" %>
 </div>
 <div class="d-flex justify-content-center">
   <%= paginate @posts %>
