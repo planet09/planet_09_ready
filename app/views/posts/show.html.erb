@@ -1,7 +1,8 @@
-<h1>글 봐!!</h1>
+<h3>planet 보기</h3>
 <%= @post.id %>번째 글
 <%= @post.title %>
 <%= @post.content.html_safe %>
+<%# @post. %>
 <!-- 글이 아래로 내려감 -->
 <%=image_tag @post.img%>
 <%=image_tag @post.img.thumb_fit.url %>
