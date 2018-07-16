@@ -1,28 +1,7 @@
 class PostsTagsController < ApplicationController
   before_action :set_posts_tag, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts_tags
-  # GET /posts_tags.json
-  def index
-    @posts_tags = PostsTag.all
-  end
 
-  # GET /posts_tags/1
-  # GET /posts_tags/1.json
-  def show
-  end
-
-  # GET /posts_tags/new
-  def new
-    @posts_tag = PostsTag.new
-  end
-
-  # GET /posts_tags/1/edit
-  def edit
-  end
-
-  # POST /posts_tags
-  # POST /posts_tags.json
   def create
     @posts_tag = PostsTag.new(posts_tag_params)
 

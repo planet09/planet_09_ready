@@ -17,17 +17,23 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     @tags = params[:tags][:content].gsub(' ','').split("#")  #이미배열
-
-     @tags.each do |tag|
-        puts tag unless tag.empty?
-        Tag.find_or_create_by(content: tag)
-     end
+    # @tags = ["#안녕, "#방탄소년단"]
 
     #Tag.create(content: @tags)
     #Tag.create(content: params[:tags][:content])
 
     respond_to do |format|
       if @post.save
+        @tags.each do |tag|
+           # puts tag unless tag.empty?
+           # Tag에 있는지 없는지 찾고
+           unless tag.empty?
+             @tag = Tag.find_or_create_by(content: tag)
+             # PostsTag에 post id랑 tag id를 저장한다.
+             PostsTag.create(post_id: @post.id ,tag_id: @tag.id)
+          end
+        end
+
         # 저장이 되었을 경우에 실행
         # flash[:notice] = "글 작성이 완료되었습니다."
         # redirect_to '/'
@@ -44,9 +50,11 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments
+
   end
 
   def edit
+    @hashtags = @post.to_hashtags
   end
 
   def update
