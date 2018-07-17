@@ -18,10 +18,12 @@
   </div>
 
   <%= f.input :content, class: "editor", rows:40, cols: 120 %>
+
+
   <%#= simple_fields_for :tags do |t| %>
-  <%= simple_fields_for :tags do |t| %>
-    <%= t.input :content, label: '해시태그를 입력해주세요 ( ex. #방탄소년단 #야광봉 #티셔츠 )', input_html: {value: @tags} %>
-  <% end %>
+  <%#= simple_fields_for :tags do |t| %>
+    <%#= t.input :content, label: '해시태그를 입력해주세요 ( ex. #방탄소년단 #야광봉 #티셔츠 )', input_html: {value: @tags} %>
+  <%# end %>
   <%=tinymce%>
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>

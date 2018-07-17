@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  resources :posts_tags
   resources :comments
   resources :banks
   resources :orders
-  resources :tags
   get 'tinymce_assets/create'
 
   devise_for :users, controllers: {
