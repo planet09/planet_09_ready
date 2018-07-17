@@ -27,6 +27,7 @@
    width: 18rem;
    border-radius: 0;
  }
+
  #banner {
    height: 150px;
  }
@@ -38,10 +39,43 @@
    width: 50px;
    height: 50px;
  }
+
+/* card */
+
  .card-img-top {
      width: 100%;
      height: 15vw;
      object-fit: cover;
+ }
+ .col-lg-3 {
+   padding-right: 0 !important;
+   padding-left: 0 !important;
+ }
+
+ .card-title{
+   color: black !important;
+   text-decoration: none !important;
+ }
+ .card-title:hover{
+   text-decoration: underline !important;
+ }
+
+ .card-title > h5 {
+   color: black;
+ }
+ .fas {
+   color: #66ffcc;
+ }
+ .far {
+   color: #66ffcc;
+ }
+
+ .progress {
+   margin-bottom: 10px;
+ }
+
+ .progress-bar {
+    background-color: #66ffcc !important;
  }
 
  .top_img{
