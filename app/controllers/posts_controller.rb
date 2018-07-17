@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(5)
+    else
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    end
     respond_to do |format|
       format.html
       format.json { render json: @posts }
@@ -16,7 +20,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    @tags = params[:tags][:content].gsub(' ','').split("#")  #이미배열
+    #@tags = params[:tags][:content].gsub(' ','').split("#")  #이미배열
     # @tags = ["#안녕, "#방탄소년단"]
 
     #Tag.create(content: @tags)
@@ -24,15 +28,15 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        @tags.each do |tag|
-           # puts tag unless tag.empty?
-           # Tag에 있는지 없는지 찾고
-           unless tag.empty?
-             @tag = Tag.find_or_create_by(content: tag)
-             # PostsTag에 post id랑 tag id를 저장한다.
-             PostsTag.create(post_id: @post.id ,tag_id: @tag.id)
-          end
-        end
+        # @tags.each do |tag|
+        #    # puts tag unless tag.empty?
+        #    # Tag에 있는지 없는지 찾고
+        #    unless tag.empty?
+        #      @tag = Tag.find_or_create_by(content: tag)
+        #      # PostsTag에 post id랑 tag id를 저장한다.
+        #      PostsTag.create(post_id: @post.id ,tag_id: @tag.id)
+        #   end
+        # end
 
         # 저장이 되었을 경우에 실행
         # flash[:notice] = "글 작성이 완료되었습니다."
@@ -54,7 +58,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @hashtags = @post.to_hashtags
+    # @hashtags = @post.to_hashtags
   end
 
   def update
@@ -79,6 +83,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
+    params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
+    # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end
 end
