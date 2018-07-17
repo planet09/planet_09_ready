@@ -14,5 +14,11 @@ module ApplicationHelper
       image_tag(url, alt: user.name, class: "rounded-circle")
     end
   end
-  
+
+    def tag_icons(tag_list)
+      tag_list.map do | tag |
+        "<a href='/posts?tag=#{CGI::escape(tag)}' class='tag'>#{tag}</a>"
+      end.join(', ').html_safe
+    end
+
 end

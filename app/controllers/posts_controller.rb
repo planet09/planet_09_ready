@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(5)
+    else
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    end
     respond_to do |format|
       format.html
       format.json { render json: @posts }
@@ -79,7 +83,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
+    params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
     # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end
 end

@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  acts_as_taggable
+
   has_many :comments
   # has_many :tags
   belongs_to :user
@@ -22,4 +24,11 @@ class Post < ActiveRecord::Base
   # def to_hashtags
   #   tags.map{|tag| '#'+tag.content}.inject(:+)
   # end
+  def tag_list_fixed
+    tag_list.to_s
+  end
+
+  def tag_list_fixed=(tag_list_string)
+    self.tag_list = tag_list_string
+  end
 end

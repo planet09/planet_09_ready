@@ -81,6 +81,9 @@
 </div>
 
 
+<% if params[:tag] %>
+  <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
+<% end %>
 <div class="row">
 <% @posts.each do |post| %>
 
