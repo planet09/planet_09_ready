@@ -27,8 +27,8 @@
       </tbody>
     </table>
 
-  <form class="form-group" action="index.html" method="post">
-
+  <form class="form-group" action="/posts/<%=@post.id%>/order" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
       <label for="exampleFormControlSelect1">옵션선택</label>
       <select class="form-control" id="exampleFormControlSelect1">
         <option>1</option>
