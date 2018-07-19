@@ -1,0 +1,2 @@
+module DummyranksHelper
+end

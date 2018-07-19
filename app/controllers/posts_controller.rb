@@ -14,6 +14,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def rank
+      @rank = Dummyrank.order(created_at: :asc).limit(10)
+      #수정해야함 일단 예시로 담음
+
+  end
+
   def new
     @post = Post.new
   end
