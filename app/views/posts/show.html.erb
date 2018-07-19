@@ -1,19 +1,61 @@
-<h3>planet 보기</h3>
-<%= @post.id %>번째 글
-<%= @post.title %>
-<%= @post.content.html_safe %>
-<tr>
-  <%= tag_icons @post.tag_list%>
-</tr>
+<%= @post.id %>
 
+<div class="display-4 text-center">
+  <%= @post.title %>
+</div>
+<div class="text-center">
+  <%= image_tag @post.user.profile_img, class: "rounded-circle profile-img"%>
+  <%= @post.user.name %>
+</div>
+
+
+<div class="showheader row my-5">
+  <div class="col">
+    <%=image_tag @post.img.thumb_fit.url %>
+  </div>
+  <div class="col">
+    <table>
+      <tbody>
+        <tr>
+          <td>계좌번호</td>
+          <td><%= @post.account %></td>
+        </tr>
+        <tr>
+          <td>진행기간</td>
+          <td><%= @post.start_date %> ~ <%= @post.end_date %></td>
+        </tr>
+      </tbody>
+    </table>
+
+  <form class="form-group" action="index.html" method="post">
+
+      <label for="exampleFormControlSelect1">옵션선택</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+
+      <label>수량</label>
+        <input type="number" value="1">
+    <input type="submit" class= "btn btn-warning" value="주문하기">
+  </form>
+
+  </div>
+</div>
+<%= @post.content.html_safe %>
+
+  <i class="fas fa-tags"></i> <%= tag_icons @post.tag_list%> <br>
 
 <%# @post.tags.each do |t| %>
   <%#=t.content%>
 <%#end%>
 <!-- 글이 아래로 내려감 -->
-<%=image_tag @post.img%>
-<%=image_tag @post.img.thumb_fit.url %>
-<%=image_tag @post.img.thumb_fill.url%>
+<!-- <%=image_tag @post.img%> -->
+
+<!-- <%=image_tag @post.img.thumb_fill.url%> -->
 <% if can? :edit, @post %>
   <%= link_to '수정하기', edit_post_path(@post) %>
 <% end %>
