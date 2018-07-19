@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       #t.integer :user_id
       t.date :start_date
       t.date :end_date
-      t.integer :account
+      t.string :account
       t.integer :goal
       t.integer :price
       t.text :content

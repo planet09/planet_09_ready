@@ -94,7 +94,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
+    params.require(:post).permit(:title, :content, :img , :account, :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
     # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end
 end
