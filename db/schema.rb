@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180717044709) do
+ActiveRecord::Schema.define(version: 20180719015748) do
 
   create_table "banks", force: :cascade do |t|
     t.string   "bank_id"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20180717044709) do
     t.string   "content"
     t.integer  "post_id"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dummyranks", force: :cascade do |t|
+    t.string   "rankname"
+    t.string   "content"
+    t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   def group
       if params[:tag]
         @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(12)
@@ -23,6 +24,11 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.html
       end
+   end
+
+  def rank
+      @rank = Dummyrank.order(created_at: :asc).limit(10)
+      #수정해야함 일단 예시로 담음
   end
 
   def new

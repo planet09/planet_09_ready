@@ -1,0 +1,91 @@
+<!-- <ul class="list-unstyled">
+  <li class="media">
+    <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">트와이스</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    </div>
+  </li>
+  <li class="media my-4">
+    <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">방탄소년단</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    </div>
+  </li>
+  <li class="media">
+    <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">List-based media object</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    </div>
+  </li>
+</ul> -->
+<div class="text-center" style="width: 90%;">
+  <h5>Ranking Top10 In This Week</h5>
+</div>
+
+<div class="card text-center" style="width: 90%;">
+  <div class="card-header">
+    The week of June 28, 2018
+  </div>
+  <div class="card-body" >
+
+  <%# rankl= Dummyrank.rankname%>
+  <%#rankc= Dummyrank.content%>
+  <%# rankurl= Dummyrank.url%>
+
+  <% @rank.each_with_index do |rank ,idx|%>
+    <!-- 여기서 부터 -->
+    <div class="card" style="width:100%;">
+      <ul class="list-center" style="margin-top:16px">
+        <!-- 반복 -->
+        <!-- .each_with_index do |group, idx| -->
+        <!-- controller에서 넘길때 상위10개만뽑아서 넘겨야한당 -->
+        <li class="media" >
+          <div class="row" style="width:100%;">
+            <div style="vertical-align:middle; width: 190px; margin-top: 80px ;"><h4><%=idx +1%>위</h4></div>
+            <!-- <div class="col-sm"><img class="mr-3" src="/app/assets/images/redvelvet.jpg/64x64" alt="Generic placeholder image"></div> -->
+             <div class="col-sm" style="width:64px; height: 90%; margin-top:3px"><%= image_tag (rank.url), :size => "260x180" %></div>
+            <div class="col-sm align-middle" style=" margin-top: 55px;">
+              <h5>#<%=rank.rankname%></h5></br>
+              참여자투표 28,560,048
+              <h6><%=rank.content%></h6>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+      <!-- 여기까지 -->
+  <% end %>
+
+  </div>
+  <div class="card-footer text-muted">
+     2주차 랭킹은 3일 후 업데이트 됩니다
+  </div>
+</div>
+
+
+ <!-- <h5 class="card-title">Special title treatment</h5> -->
+<!-- 여기서 부터 -->
+<!-- <ul class="list-unstyled">
+  <li class="media">
+    <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">트와이스</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    </div>
+  </li>
+</ul> -->
+<!-- 여기까지 -->
+
+
+<!-- <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div> -->
