@@ -14,6 +14,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def group
+      if params[:tag]
+        @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(12)
+      else
+        @posts = Post.order(created_at: :desc).page(params[:page]).per(12)
+      end
+      respond_to do |format|
+        format.html
+      end
+  end
+
   def new
     @post = Post.new
   end
