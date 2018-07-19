@@ -16,8 +16,12 @@ Rails.application.routes.draw do
 
 
   root 'posts#index'
+
+  get '/posts/group' => 'posts#group'
+
   get 'posts/rank' => 'posts#rank'
   get 'posts/order' => 'posts#order'
+
 
   resources :posts
   put '/posts/:post_id/like' => 'likes#create'

@@ -14,15 +14,23 @@ class PostsController < ApplicationController
     end
   end
 
+
+  def group
+      if params[:tag]
+        @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(12)
+      else
+        @posts = Post.order(created_at: :desc).page(params[:page]).per(12)
+      end
+      respond_to do |format|
+        format.html
+      end
+   end
+
   def rank
       @rank = Dummyrank.order(created_at: :asc).limit(10)
       #수정해야함 일단 예시로 담음
   end
-
-  def order  
-  end
-
-
+  
   def new
     @post = Post.new
   end
@@ -92,7 +100,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
+    params.require(:post).permit(:title, :content, :img , :account, :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
     # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end
 end
