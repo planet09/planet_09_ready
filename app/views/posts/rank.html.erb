@@ -21,31 +21,39 @@
     </div>
   </li>
 </ul> -->
+<div class="text-center" style="width: 90%;">
+  <h5>Ranking Top10 In This Month</h5>
+</div>
 
-Ranking Top10 In this month
-<br />
 <div class="card text-center" style="width: 90%;">
   <div class="card-header">
     The week of June 28, 2018
   </div>
   <div class="card-body" >
+
+  <% (1..10).each_with_index do |ranklist, idx|%>
     <!-- 여기서 부터 -->
     <div class="card" style="width:100%;">
-      <ul class="list-center" style="margin-top:15px">
+      <ul class="list-center" style="margin-top:16px">
         <!-- 반복 -->
         <!-- .each_with_index do |group, idx| -->
         <!-- controller에서 넘길때 상위10개만뽑아서 넘겨야한당 -->
         <li class="media" >
           <div class="row" style="width:100%;">
-            <div class="col-sm text-center">1</div>
+            <div style="vertical-align:middle; width: 190px; margin-top: 100px ;"><h4><%=idx +1%>위</h4></div>
             <!-- <div class="col-sm"><img class="mr-3" src="/app/assets/images/redvelvet.jpg/64x64" alt="Generic placeholder image"></div> -->
-             <div class="col-sm" style="width:64px; heignt:64px;"><%= image_tag ("wanna.jpg"), class: "d-block w-100" %></div>
-            <div class="col-sm"><h5 class="mt-0 mb-1">트와이스</h5></div>
+             <div class="col-sm" style="width:64px; height: 90%; margin-top:3px"><%= image_tag ("wanna.jpg"), class: "d-block w-100" %></div>
+            <div class="col-sm align-middle" style=" margin-top: 80px;">
+              <h5>#EXO</h5></br>
+              <h6>#카이 #1위축하</h6>
+            </div>
           </div>
         </li>
       </ul>
-      <!-- 여기까지 -->
     </div>
+      <!-- 여기까지 -->
+  <% end %>
+
   </div>
   <div class="card-footer text-muted">
     2 days ago

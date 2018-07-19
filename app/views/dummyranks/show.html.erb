@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rankname:</strong>
+  <%= @dummyrank.rankname %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @dummyrank.content %>
+</p>
+
+<%= link_to 'Edit', edit_dummyrank_path(@dummyrank) %> |
+<%= link_to 'Back', dummyranks_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dummyranks
   resources :comments
   resources :banks
   resources :orders
