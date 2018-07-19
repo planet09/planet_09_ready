@@ -15,8 +15,9 @@ class PostsController < ApplicationController
   end
 
   def rank
-      @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+      @rank = Dummyrank.order(created_at: :asc).limit(10)
       #수정해야함 일단 예시로 담음
+
   end
 
   def new
