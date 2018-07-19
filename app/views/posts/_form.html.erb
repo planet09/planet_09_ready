@@ -17,7 +17,7 @@
                                 order: [:year, :month, :day] %></div>
   </div>
   <%= f.input :account %>
-  <%= f.input :option %>
+  <%= f.input :option placeholder: '옵션은 /로 구분해주세요'%>
 
   <%= f.input :content, class: "editor", rows:40, cols: 120 %>
   <%= f.input :tag_list_fixed, placeholder: '태그는 ,로 구분해주세요'%>

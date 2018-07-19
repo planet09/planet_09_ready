@@ -71,7 +71,12 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments
-    @option = @post.option.gsub('', ' ').split('/')
+    @option = [];
+    if @post.option != nil
+      @option = @post.option.gsub(' ','').split('/')
+    else
+      @option.push(@post.title) 
+    end
 
   end
 

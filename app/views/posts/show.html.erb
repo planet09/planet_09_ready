@@ -17,6 +17,10 @@
     <table>
       <tbody>
         <tr>
+          <td>상품설명</td>
+          <td><%= @post.description %></td>
+        </tr>
+        <tr>
           <td>계좌번호</td>
           <td><%= @post.account %></td>
         </tr>
@@ -26,19 +30,26 @@
         </tr>
       </tbody>
     </table>
+    <label>참여상황</label> <br>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div>
 
   <form class="form-group" action="index.html" method="post">
 
       <label for="exampleFormControlSelect1">옵션선택</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select name = "options" class="form-control" id="options">
         <option selected>옵션선택</option>
           <% @option.each do |o| %>
-          <option><<%= o %></option>
+          <option class="option" value="<%= o %>"><%= o %></option>
           <% end %>
       </select>
 
-      <label>수량</label>
-        <input type="number" value="1">
+      <div class="select_option">
+
+      </div>
+
+
     <input type="submit" class= "btn btn-warning" value="주문하기">
   </form>
 
@@ -62,7 +73,7 @@
   <%= link_to '삭제하기',
                       @post,
                       method: :delete,
-                      data: {confirm: '너지울거야?'} %>
+                      data: {confirm: '삭제하시겠습니까?'} %>
 <% end %>
 <hr />
 
@@ -84,6 +95,11 @@
 </div>
 
 <script>
+
+  $('#options').change(function(){
+      $('.select_option').append('옵션선택: ' + this.value + ' <br /> <input type="number" value="1"/> <hr />');
+  });
+
   $('form').on('ajax:success', function() {
     $('input[name="content"]').val('');
   });
