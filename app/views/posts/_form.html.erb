@@ -17,6 +17,8 @@
                                 order: [:year, :month, :day] %></div>
   </div>
   <%= f.input :account %>
+  <%= f.input :option %>
+
   <%= f.input :content, class: "editor", rows:40, cols: 120 %>
   <%= f.input :tag_list_fixed, placeholder: '태그는 ,로 구분해주세요'%>
 
@@ -27,6 +29,7 @@
   <%=tinymce%>
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>
+
 
 <!-- 마저 수정할것~ -->
  <!-- <script>

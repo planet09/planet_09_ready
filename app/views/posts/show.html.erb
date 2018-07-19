@@ -31,11 +31,10 @@
 
       <label for="exampleFormControlSelect1">옵션선택</label>
       <select class="form-control" id="exampleFormControlSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+        <option selected>옵션선택</option>
+          <% @option.each do |o| %>
+          <option><<%= o %></option>
+          <% end %>
       </select>
 
       <label>수량</label>
