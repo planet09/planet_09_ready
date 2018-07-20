@@ -4,10 +4,15 @@
   <h3>주문하기</h3>
 </div>
 
-<div class="card text" style="width: 90%;">
-  <div class="card-header text-center">
-    구매자 정보
-  </div>
+
+<form class="form-group" action="/posts/buy" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+  <div class="card text" style="width: 90%;">
+    <div class="card-header text-center">
+       구매자정보
+    </div>
   <!-- 여기서부터 -->
   <div class="card-body" >
   			<table class="tbl_type_basic">
@@ -37,27 +42,6 @@
   			</table>
 </div>
   <!-- 여기까지 -->
-  <!-- <div class="card-body" >
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="o_name">주문자이름</label>
-        <input type="string" class="form-control" id="o_name" placeholder="성명을 입력하세요">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="o_phone">주문자번호</label>
-        <input id="telNo" type="tel" class="form-control" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="(ex.xxx-xxx-xxxx)">
-        <span class="validity"></span>
-      </div>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">주문자 Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-    </div>
-  </div>
-  <div class="card-footer text-muted">
-    구매확인을 해주세요
-  </div> -->
-
 </div>
 </br>
 
@@ -69,8 +53,8 @@
   <div class="card-body" >
     <div class="address_select_wrap">
         <span class="address_select">
-        <input type="checkbox" class="radio" value="Y" name="sameorder_info" id="sameorder_info">
-        <label for="sameorder_info"> 구매자 정보와 동일</label>
+          <input id="chk_sameinfo" name="chk_sameinfo" type="checkbox" value="Y" />
+          <label for="chk_sameinfo">구매자 정보와 동일</label>
       </span>
     </div>
     <table class="tbl_basic type_basic">
@@ -148,59 +132,15 @@
   </div>
   <!-- 여기까지 -->
 
-    <!-- <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-      </div>
-    </div> -->
-
-    <!-- <div class="form-group">
-      <label for="inputAddress">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button> -->
   </form>
   </div>
+
+<div class="card text-center" style="width: 90%;">
+    <div class="card-header">
+      결제정보
+    </div>
   <div class="card-body" >
 
-
-  </div>
-  <div class="card-footer text-muted">
-    구매확인을 해주세요
   </div>
 </div>
 </br>
@@ -212,9 +152,6 @@
   <div class="card-body" >
 
 
-  </div>
-  <div class="card-footer text-muted">
-    구매확인을 해주세요
   </div>
 </div>
 </br>
@@ -231,3 +168,6 @@
     주문자 동의
   </div>
 </div>
+
+<input type="submit" class= "btn btn-warning" value="최종주문하기">
+</form>
