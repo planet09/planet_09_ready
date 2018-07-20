@@ -75,7 +75,7 @@ class PostsController < ApplicationController
     if @post.option != nil
       @option = @post.option.gsub(' ','').split('/')
     else
-      @option.push(@post.title) 
+      @option.push(@post.title)
     end
 
   end
@@ -106,7 +106,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :account, :option, :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
+    params.require(:post).permit(:title, :content, :img , :account, :price, :option, :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
     # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end
 end
