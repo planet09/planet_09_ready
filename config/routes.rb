@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/posts/group' => 'posts#group'
 
   get 'posts/rank' => 'posts#rank'
+  post 'posts/:id/order' => 'posts#order'
 
 
   resources :posts

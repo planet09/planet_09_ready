@@ -1,0 +1,233 @@
+
+
+<div class="text-center" style="width: 90%;">
+  <h3>주문하기</h3>
+</div>
+
+<div class="card text" style="width: 90%;">
+  <div class="card-header text-center">
+    구매자 정보
+  </div>
+  <!-- 여기서부터 -->
+  <div class="card-body" >
+  			<table class="tbl_type_basic">
+  				<tbody>
+  					<tr class="fir">
+  						<td>이름</td>
+  						<td><input type="type" value="" class="txt_input" name="uname" id="uname"></td>
+  					</tr>
+  					<tr>
+  						<td>구매자번호</td>
+  						<td>
+  							<div class="b_info_wrap">
+  								<div class="b_info">
+  									<select name="tel1" id="tel1">
+  										<option value="010" selected="selected">010</option>
+  										<option value="011">011</option>
+  										<option value="016">016</option>
+  									</select>
+  									<input type="text" value="" class="digit txt_input" maxlength="4" name="tel2" id="tel2">
+  									<span class="_hippen">-</span>
+  									<input type="text" value="" class="digit txt_input" maxlength="4" name="tel3" id="tel3">
+  									</div>
+  							</div>
+  						</td>
+  					</tr>
+  				</tbody>
+  			</table>
+</div>
+  <!-- 여기까지 -->
+  <!-- <div class="card-body" >
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="o_name">주문자이름</label>
+        <input type="string" class="form-control" id="o_name" placeholder="성명을 입력하세요">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="o_phone">주문자번호</label>
+        <input id="telNo" type="tel" class="form-control" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="(ex.xxx-xxx-xxxx)">
+        <span class="validity"></span>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">주문자 Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    구매확인을 해주세요
+  </div> -->
+
+</div>
+</br>
+
+<div class="card text" style="width: 90%;">
+  <div class="card-header text-center">
+    받는사람 정보
+  </div>
+  <!-- 여기서부터 -->
+  <div class="card-body" >
+    <div class="address_select_wrap">
+        <span class="address_select">
+        <input type="checkbox" class="radio" value="Y" name="sameorder_info" id="sameorder_info">
+        <label for="sameorder_info"> 구매자 정보와 동일</label>
+      </span>
+    </div>
+    <table class="tbl_basic type_basic">
+      <tbody>
+        <tr class="fir">
+          <td>받는사람이름</td>
+          <td><input type="type" value="" class="txt_input" name="rcp_name" id="rcp_name"></td>
+        </tr>
+        <tr>
+          <td>전화번호</td>
+          <td>
+            <div class="rcp_info_wrap">
+              <div class="rcp_info">
+                <select name="tel1" id="tel1">
+                  <option value="010" selected="selected">010</option>
+                  <option value="011">011</option>
+                  <option value="016">016</option>
+                </select>
+                <input type="text" value="" class="digit txt_input" maxlength="4" name="tel2" id="tel2">
+                <span class="_hippen">-</span>
+                <input type="text" value="" class="digit txt_input" maxlength="4" name="tel3" id="tel3">
+                </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" class="txt_input" id="inputEmail4" placeholder="Email"></td>
+        </tr>
+
+       <tr id="no_recent_row">
+          <td>주소</td>
+          <td>
+            <span class="way_number">
+              <label class="hidden" for="zipcode1">우편번호</label>
+              <input type="text" value="" readonly="readonly" name="zipcode1" class="digit txt_input r_space" id="zipcode1">
+              <button class="btn_order btn_search_zip" type="button" onclick="open_zipcode('selectAddr_v2')">우편번호 찾기</button>
+            </span>
+          </br>
+            <p class="wrap_address">
+              <label for="uaddr1">기본주소</label>
+              <input type="text" id="uaddr1" name="uaddr1" value="" class="inp inp_add" readonly="readonly">
+              <label for="uaddr2">상세주소</label>
+              <input type="text" id="uaddr2" name="uaddr2" value="" class="inp inp_add" style="width:380px;" maxlength="100">
+
+            </p>
+            <span class="road_name" style="display:none">
+              <span class="road_icon">도로명</span>
+              <span id="raddr1_txt"></span>
+              <input type="hidden" id="raddr1" name="raddr1" value="" readonly="readonly">
+              <input type="text" id="raddr2" name="raddr2" value="" class="txt_input" readonly="readonly">
+            </span>
+        </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">배송메시지</label>
+          </td>
+          <td>
+            <input type="hidden" id="dmessage" name="dmessage" value="">
+            <input type="hidden" id="dmessage_code" name="dmessage_code" value="">
+            <select id="del_message1" style="height:20px; float:left; margin-right:3px;" onchange="del_message1(this.value)">
+              <option value="">요청사항 선택</option>
+              <option value="Dm1">부재 시 경비실에 맡겨주세요</option>
+              <option value="Dm2">부재 시 휴대폰으로 문자남겨주세요</option>
+              <option value="Dm3">집 앞에 놓아주세요</option>
+              <option value="Dm">직접 입력</option>
+            </select>
+            <input type="text" id="del_message2" class="txt del_input" maxlength="50" value="" style="display:none;">
+            <label id="del_message_textcnt" style="display:none;"><lable style="padding-top: 10px; padding-left: 10px; font-size: 5px;"><font id="chk_del_message_cnt" size="1" face="Helvetica">0</font></lable><font size="1" face="Helvetica"> / 60자</font></label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 여기까지 -->
+
+    <!-- <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      </div>
+    </div> -->
+
+    <!-- <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button> -->
+  </form>
+  </div>
+  <div class="card-body" >
+
+
+  </div>
+  <div class="card-footer text-muted">
+    구매확인을 해주세요
+  </div>
+</div>
+</br>
+
+<div class="card text-center" style="width: 90%;">
+  <div class="card-header">
+    결제정보
+  </div>
+  <div class="card-body" >
+
+
+  </div>
+  <div class="card-footer text-muted">
+    구매확인을 해주세요
+  </div>
+</div>
+</br>
+
+<div class="card text-center" style="width: 90%;">
+  <div class="card-header">
+    결제방법
+  </div>
+  <div class="card-body" >
+
+
+  </div>
+  <div class="card-footer text-muted">
+    주문자 동의
+  </div>
+</div>
