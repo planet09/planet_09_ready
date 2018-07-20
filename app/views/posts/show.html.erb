@@ -11,7 +11,7 @@
 
 <div class="showheader row my-5">
   <div class="col">
-    <%=image_tag @post.img.thumb_fit.url %>
+    <%=image_tag @post.img.thumb_fill.url %>
   </div>
   <div class="col">
     <table>
@@ -49,12 +49,15 @@
 
       </div>
 
+    <div class="text-center my-5">
+      <input type="submit" class= "btn btn-warning" value="주문하기">
+    </div>
 
-    <input type="submit" class= "btn btn-warning" value="주문하기">
   </form>
 
   </div>
 </div>
+<h3>상세설명</h3>
 <%= @post.content.html_safe %>
 
   <i class="fas fa-tags"></i> <%= tag_icons @post.tag_list%> <br>
