@@ -34,6 +34,10 @@ class PostsController < ApplicationController
 
   end
 
+  def buy
+    @orderform=Order.new
+  end
+
   def new
     @post = Post.new
   end
@@ -78,7 +82,7 @@ class PostsController < ApplicationController
     if @post.option != nil
       @option = @post.option.gsub(' ','').split('/')
     else
-      @option.push(@post.title) 
+      @option.push(@post.title)
     end
 
   end

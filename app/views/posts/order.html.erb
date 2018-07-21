@@ -3,23 +3,21 @@
 <div class="text-center" style="width: 90%;">
   <h3>주문하기</h3>
 </div>
-
+</br>
 
 <form class="form-group" action="/posts/buy" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-
-  <div class="card text" style="width: 90%;">
+  <!-- <div class="card text" style="width: 90%;">
     <div class="card-header text-center">
        구매자정보
-    </div>
+    </div> -->
   <!-- 여기서부터 -->
-  <div class="card-body" >
+  <!-- <div class="card-body">
   			<table class="tbl_type_basic">
   				<tbody>
   					<tr class="fir">
   						<td>이름</td>
-  						<td><input type="type" value="" class="txt_input" name="uname" id="uname"></td>
+  						<td><input type="type" value="" class="txt_input" name="uname"></td>
   					</tr>
   					<tr>
   						<td>구매자번호</td>
@@ -40,10 +38,10 @@
   					</tr>
   				</tbody>
   			</table>
-</div>
+</div> -->
   <!-- 여기까지 -->
-</div>
-</br>
+<!-- </div>
+</br> -->
 
 <div class="card text" style="width: 90%;">
   <div class="card-header text-center">
@@ -57,7 +55,7 @@
           <label for="chk_sameinfo">구매자 정보와 동일</label>
       </span>
     </div>
-    <table class="tbl_basic type_basic">
+    <table class="table_basic">
       <tbody>
         <tr class="fir">
           <td>받는사람이름</td>
@@ -73,16 +71,16 @@
                   <option value="011">011</option>
                   <option value="016">016</option>
                 </select>
-                <input type="text" value="" class="digit txt_input" maxlength="4" name="tel2" id="tel2">
+                <input type="text" value="" maxlength="4" name="tel2" id="tel2">
                 <span class="_hippen">-</span>
-                <input type="text" value="" class="digit txt_input" maxlength="4" name="tel3" id="tel3">
+                <input type="text" value="" maxlength="4" name="tel3" id="tel3">
                 </div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Email</td>
-          <td><input type="email" class="txt_input" id="inputEmail4" placeholder="Email"></td>
+          <td><input type="email" name="email" placeholder="Email"></td>
         </tr>
 
        <tr id="no_recent_row">
@@ -132,7 +130,6 @@
   </div>
   <!-- 여기까지 -->
 
-  </form>
   </div>
 
 <div class="card text-center" style="width: 90%;">

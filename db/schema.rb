@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20180719015748) do
     t.string   "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "account"
+    t.integer  "account"
     t.integer  "goal"
     t.integer  "price"
     t.text     "content"

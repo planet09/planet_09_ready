@@ -1,6 +1,9 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
+      t.string :rcp_name
+      t.string :rcp_email
+      t.string :del_tel_num
       t.string :o_id
       t.string :del_addr
       t.string :detail_addr
