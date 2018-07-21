@@ -54,7 +54,9 @@ ActiveRecord::Schema.define(version: 20180719015748) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "o_id"
+    t.string   "rcp_name"
+    t.string   "rcp_email"
+    t.string   "del_tel_num"
     t.string   "del_addr"
     t.string   "detail_addr"
     t.string   "post_code"
@@ -73,7 +75,8 @@ ActiveRecord::Schema.define(version: 20180719015748) do
     t.string   "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "account"
+    t.string   "account"
+    t.string   "account_name"
     t.integer  "goal"
     t.integer  "price"
     t.text     "content"

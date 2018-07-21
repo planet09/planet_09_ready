@@ -16,9 +16,10 @@
     <div class="col">  <%= f.input :end_date, as: :date, start_year: Date.today.year,
                                 order: [:year, :month, :day] %></div>
   </div>
-  <%= f.input :account %>
+  <%= f.input :account , placeholder:"계좌번호를 -없이 입력해주세요" %>
+  <%= f.input :account_name , placeholder:"은행명을 입력해주세요" %>
+  <%= f.input :price , placeholder:"가격을 입력해주세요" %>
   <%= f.input :option, placeholder: '옵션은 /로 구분해주세요'%>
-
   <%= f.input :content, class: "editor", rows:40, cols: 120 %>
   <%= f.input :tag_list_fixed, placeholder: '태그는 ,로 구분해주세요'%>
 

@@ -5,7 +5,7 @@
 </div>
 </br>
 
-<form class="form-group" action="/posts/buy" method="post">
+<form class="form-group" action="/posts/<%= @post.id %>/buy" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <!-- <div class="card text" style="width: 90%;">
     <div class="card-header text-center">
@@ -80,16 +80,16 @@
         </tr>
         <tr>
           <td>Email</td>
-          <td><input type="email" name="email" placeholder="Email"></td>
+          <td><input type="email" name="rcp_email" placeholder="Email"></td>
         </tr>
 
        <tr id="no_recent_row">
           <td>주소</td>
           <td>
-            <input type="text" id="postcode" placeholder="우편번호">
+            <input type="text" id="postcode" name="post_code" placeholder="우편번호">
             <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-            <input type="text" id="address" placeholder="주소">
-            <input type="text" id="address2" placeholder="상세주소">
+            <input type="text" id="address" name="del_addr" placeholder="주소">
+            <input type="text" id="address2" name="detail_addr" placeholder="상세주소">
 
             <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
             <script>
@@ -185,7 +185,10 @@
       결제정보
     </div>
   <div class="card-body" >
-
+    <tr>
+      <td>총 결제금액</td>
+      <td><%= @post.price %></td>
+    </tr>
   </div>
 </div>
 </br>

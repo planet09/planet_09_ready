@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :order, :buy]
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
   def index
@@ -30,12 +30,15 @@ class PostsController < ApplicationController
       @rank = Dummyrank.order(created_at: :asc).limit(10)
       #수정해야함 일단 예시로 담음
   end
-  def order
 
+  def order
   end
 
   def buy
     @orderform=Order.new
+    @orderform.total_pay = @post.price * 5
+    @orderform.save
+
   end
 
   def new
