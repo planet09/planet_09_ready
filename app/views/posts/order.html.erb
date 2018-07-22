@@ -3,23 +3,21 @@
 <div class="text-center" style="width: 90%;">
   <h3>주문하기</h3>
 </div>
+</br>
 
-
-<form class="form-group" action="/posts/buy" method="post">
+<form class="form-group" action="/posts/<%= @post.id %>/buy" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-
-  <div class="card text" style="width: 90%;">
+  <!-- <div class="card text" style="width: 90%;">
     <div class="card-header text-center">
        구매자정보
-    </div>
+    </div> -->
   <!-- 여기서부터 -->
-  <div class="card-body" >
+  <!-- <div class="card-body">
   			<table class="tbl_type_basic">
   				<tbody>
   					<tr class="fir">
   						<td>이름</td>
-  						<td><input type="type" value="" class="txt_input" name="uname" id="uname"></td>
+  						<td><input type="type" value="" class="txt_input" name="uname"></td>
   					</tr>
   					<tr>
   						<td>구매자번호</td>
@@ -40,10 +38,10 @@
   					</tr>
   				</tbody>
   			</table>
-</div>
+</div> -->
   <!-- 여기까지 -->
-</div>
-</br>
+<!-- </div>
+</br> -->
 
 <div class="card text" style="width: 90%;">
   <div class="card-header text-center">
@@ -57,7 +55,7 @@
           <label for="chk_sameinfo">구매자 정보와 동일</label>
       </span>
     </div>
-    <table class="tbl_basic type_basic">
+    <table class="table_basic">
       <tbody>
         <tr class="fir">
           <td>받는사람이름</td>
@@ -73,22 +71,71 @@
                   <option value="011">011</option>
                   <option value="016">016</option>
                 </select>
-                <input type="text" value="" class="digit txt_input" maxlength="4" name="tel2" id="tel2">
+                <input type="text" value="" maxlength="4" name="tel2" id="tel2">
                 <span class="_hippen">-</span>
-                <input type="text" value="" class="digit txt_input" maxlength="4" name="tel3" id="tel3">
+                <input type="text" value="" maxlength="4" name="tel3" id="tel3">
                 </div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Email</td>
-          <td><input type="email" class="txt_input" id="inputEmail4" placeholder="Email"></td>
+          <td><input type="email" name="rcp_email" placeholder="Email"></td>
         </tr>
 
        <tr id="no_recent_row">
           <td>주소</td>
           <td>
-            <span class="way_number">
+            <input type="text" id="postcode" name="post_code" placeholder="우편번호">
+            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+            <input type="text" id="address" name="del_addr" placeholder="주소">
+            <input type="text" id="address2" name="detail_addr" placeholder="상세주소">
+
+            <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+            <script>
+              function execDaumPostcode() {
+                  new daum.Postcode({
+                      oncomplete: function(data) {
+                          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                          // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                          var fullAddr = ''; // 최종 주소 변수
+                          var extraAddr = ''; // 조합형 주소 변수
+
+                          // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                          if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                              fullAddr = data.roadAddress;
+
+                          } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                              fullAddr = data.jibunAddress;
+                          }
+
+                          // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                          if(data.userSelectedType === 'R'){
+                              //법정동명이 있을 경우 추가한다.
+                              if(data.bname !== ''){
+                                  extraAddr += data.bname;
+                              }
+                              // 건물명이 있을 경우 추가한다.
+                              if(data.buildingName !== ''){
+                                  extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                              }
+                              // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                              fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                          }
+
+                          // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                          document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+                          document.getElementById('address').value = fullAddr;
+
+                          // 커서를 상세주소 필드로 이동한다.
+                          document.getElementById('address2').focus();
+                      }
+                  }).open();
+              }
+            </script>
+            <!-- <span class="way_number">
               <label class="hidden" for="zipcode1">우편번호</label>
               <input type="text" value="" readonly="readonly" name="zipcode1" class="digit txt_input r_space" id="zipcode1">
               <button class="btn_order btn_search_zip" type="button" onclick="open_zipcode('selectAddr_v2')">우편번호 찾기</button>
@@ -106,7 +153,7 @@
               <span id="raddr1_txt"></span>
               <input type="hidden" id="raddr1" name="raddr1" value="" readonly="readonly">
               <input type="text" id="raddr2" name="raddr2" value="" class="txt_input" readonly="readonly">
-            </span>
+            </span> -->
         </td>
         </tr>
         <tr>
@@ -131,16 +178,17 @@
     </table>
   </div>
   <!-- 여기까지 -->
-
-  </form>
-  </div>
+</div>
 
 <div class="card text-center" style="width: 90%;">
     <div class="card-header">
       결제정보
     </div>
   <div class="card-body" >
-
+    <tr>
+      <td>총 결제금액</td>
+      <td><%= @post.price %></td>
+    </tr>
   </div>
 </div>
 </br>
@@ -171,3 +219,16 @@
 
 <input type="submit" class= "btn btn-warning" value="최종주문하기">
 </form>
+
+<!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
+    daum.postcode.load(function(){
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+            }
+        }).open();
+    });
+</script> -->

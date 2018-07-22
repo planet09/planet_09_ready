@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get 'posts/rank' => 'posts#rank'
   post 'posts/:id/order' => 'posts#order'
-  post 'posts/buy' => 'posts#buy'
+  post 'posts/:id/buy' => 'posts#buy'
 
 
   resources :posts
