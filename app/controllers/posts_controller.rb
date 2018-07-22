@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :order, :buy]
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
   def index
@@ -7,6 +7,20 @@ class PostsController < ApplicationController
       @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(5)
     else
       @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
+  end
+
+  def mypage
+    if params[:tag]
+      @myposts = current_user.posts.tagged_with(params[:tag]).order(created_at: :desc).first(4)
+      @likeposts = current_user.liked_posts.tagged_with(params[:tag]).order(created_at: :desc).first(4)
+    else
+      @myposts = current_user.posts.order(created_at: :desc).first(4)
+      @likeposts = current_user.liked_posts.order(created_at: :desc).first(4)
     end
     respond_to do |format|
       format.html
@@ -30,7 +44,14 @@ class PostsController < ApplicationController
       @rank = Dummyrank.order(created_at: :asc).limit(10)
       #수정해야함 일단 예시로 담음
   end
+
   def order
+  end
+
+  def buy
+    @orderform=Order.new
+    @orderform.total_pay = @post.price * 5
+    @orderform.save
 
   end
 
