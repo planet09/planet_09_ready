@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.string :rcp_name
       t.string :rcp_email
+      t.string :del_msg
       t.string :del_tel_num
       t.string :del_addr
       t.string :detail_addr
