@@ -11,7 +11,7 @@
 
 <div class="showheader row my-5">
   <div class="col">
-    <%=image_tag @post.img.thumb_fit.url %>
+    <%=image_tag @post.img.thumb_fill.url %>
   </div>
   <div class="col">
     <table>
@@ -19,6 +19,10 @@
         <tr>
           <td>상품설명</td>
           <td><%= @post.description %></td>
+        </tr>
+        <tr>
+          <td>가격</td>
+          <td id="price-<%= @post.id %>"><%= @post.price %> 원</td>
         </tr>
         <tr>
           <td>계좌번호</td>
@@ -48,13 +52,19 @@
       <div class="select_option">
 
       </div>
+      <!-- <div >
+        <p class="total_price">0</p>
+      </div> -->
 
+    <div class="text-center my-5">
+      <input type="submit" class= "btn btn-warning" value="주문하기">
+    </div>
 
-    <input type="submit" class= "btn btn-warning" value="주문하기">
   </form>
 
   </div>
 </div>
+<h3>상세설명</h3>
 <%= @post.content.html_safe %>
 
   <i class="fas fa-tags"></i> <%= tag_icons @post.tag_list%> <br>
@@ -97,8 +107,13 @@
 <script>
 
   $('#options').change(function(){
-      $('.select_option').append('옵션선택: ' + this.value + ' <br /> <input type="number" value="1"/> <hr />');
+      $('.select_option').append(`옵션선택:  ${this.value} <br /> <input type="number" class="quantity" value="1"/> <hr />`);
   });
+
+  // $('.quantity').change(function(data){
+  //   var total_price = data.price * $('.quantity').val();
+  //   $('.total_price').text(`${total_price}`);
+  // })
 
   $('form').on('ajax:success', function() {
     $('input[name="content"]').val('');
