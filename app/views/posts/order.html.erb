@@ -161,8 +161,8 @@
             <label for="">배송메시지</label>
           </td>
           <td>
-            <input type="hidden" id="dmessage" name="dmessage" value="">
-            <input type="hidden" id="dmessage_code" name="dmessage_code" value="">
+            <!-- <input type="hidden" id="dmessage" name="dmessage" value=""> -->
+            <input type="hidden" id="dmessage_code" name="dmessage" value="">
             <select id="del_message1" style="height:20px; float:left; margin-right:3px;" onchange="del_message1(this.value)">
               <option value="">요청사항 선택</option>
               <option value="Dm1">부재 시 경비실에 맡겨주세요</option>
@@ -187,7 +187,8 @@
   <div class="card-body" >
     <tr>
       <td>총 결제금액</td>
-      <td><%= @post.price %></td>
+       <td><%= @post.price %></td>
+      <!-- <td><%#= @orderform.total_pay %></td> -->
     </tr>
   </div>
 </div>
