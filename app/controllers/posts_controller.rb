@@ -28,6 +28,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def admin
+    
+  end
+
 
   def group
       if params[:tag]

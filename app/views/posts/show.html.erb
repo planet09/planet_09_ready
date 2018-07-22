@@ -1,4 +1,4 @@
-<%= @post.id %>
+<%#= @post.id %>
 
 <div class="display-4 text-center">
   <%= @post.title %>
@@ -84,6 +84,13 @@
                       @post,
                       method: :delete,
                       data: {confirm: '삭제하시겠습니까?'} %>
+<% end %>
+<% if can? :admin, @post %> <!--권한부여  근데이거 겟으로넘겨도됨?-->
+  <%= link_to '관리자페이지',
+                      "/posts/#{@post.id}/admin",
+                      method: :post,
+                      data: {confirm: '관리자페이지로 넘어가시겠습니까?'} %>
+  <%#= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
 <% end %>
 <hr />
 
