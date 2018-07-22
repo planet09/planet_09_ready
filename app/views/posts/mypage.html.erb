@@ -1,0 +1,74 @@
+<h3>마이페이지</h3>
+<%= image_tag current_user.profile_img, class: "rounded-circle profile-img"%>
+  <span><%= current_user.email %></span>
+
+<div class="mypagebox">
+  <h3>참여한 플래닛</h3>
+</div>
+
+<div class="mypagebox">
+  <h3>좋아요 플래닛</h3>
+  <div class="row">
+    <% @likeposts.each do |post| %>
+    <div class="card col-lg-3 col-md-4 col-sm-6">
+      <%= link_to post do %>
+      <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
+      <% end %>
+      <div class="progress" style="height: 5px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    <div class="card-body text-center">
+      <% if current_user and current_user.liked_posts.include? post %>
+          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+      <% else %>
+          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+      <% end %>
+      <span><%= post.liked_users.count %></span>
+      <!-- <h5 class="card-title"><%= post.title %></h5> -->
+      <%= link_to "<h5>#{post.title}</h5>".html_safe, post, class: "card-title" %>
+      <p class="card-text"> <%= post.user.email %> </p>
+      <p class="card-text"><%= post.description %></p>
+      <%= tag_icons post.tag_list%>
+    </div>
+  </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mypagebox">
+  <h3>주최한 플래닛</h3>
+
+  <div class="row">
+    <% @myposts.each do |post| %>
+    <div class="card col-lg-3 col-md-4 col-sm-6">
+      <%= link_to post do %>
+      <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
+      <% end %>
+      <div class="progress" style="height: 5px;">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    <div class="card-body text-center">
+      <% if current_user and current_user.liked_posts.include? post %>
+          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+      <% else %>
+          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+      <% end %>
+      <span><%= post.liked_users.count %></span>
+      <!-- <h5 class="card-title"><%= post.title %></h5> -->
+      <%= link_to "<h5>#{post.title}</h5>".html_safe, post, class: "card-title" %>
+      <p class="card-text"> <%= post.user.email %> </p>
+      <p class="card-text"><%= post.description %></p>
+      <%= tag_icons post.tag_list%>
+    </div>
+  </div>
+    <% end %>
+  </div>
+</div>

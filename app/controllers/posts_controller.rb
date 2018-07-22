@@ -14,6 +14,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def mypage
+    if params[:tag]
+      @myposts = current_user.posts.tagged_with(params[:tag]).order(created_at: :desc).first(4)
+      @likeposts = current_user.liked_posts.tagged_with(params[:tag]).order(created_at: :desc).first(4)
+    else
+      @myposts = current_user.posts.order(created_at: :desc).first(4)
+      @likeposts = current_user.liked_posts.order(created_at: :desc).first(4)
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
+  end
+
 
   def group
       if params[:tag]
