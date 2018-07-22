@@ -36,7 +36,8 @@ class PostsController < ApplicationController
 
   def buy
     @orderform=Order.new
-    @orderform.total_pay = @post.price * 5
+    @orderform.rcp_name=params[:rcp_name]
+    @orderform.total_pay = @post.price * 5    #여기 옵션 갯수넘어오는거 받아서 다시처리
     @orderform.save
 
   end
@@ -116,7 +117,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :account, :option, :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
+    params.require(:post).permit(:title, :content, :img , :account, :option, :account_name, :goal, :price, :start_date, :end_date, :description, :tag_list_fixed) #넘어오는 파람 허가
     # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end
 end
