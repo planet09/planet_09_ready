@@ -162,12 +162,12 @@
           </td>
           <td>
             <!-- <input type="hidden" id="dmessage" name="dmessage" value=""> -->
-            <input type="hidden" id="dmessage_code" name="dmessage" value="">
-            <select id="del_message1" style="height:20px; float:left; margin-right:3px;" onchange="del_message1(this.value)">
-              <option value="">요청사항 선택</option>
-              <option value="Dm1">부재 시 경비실에 맡겨주세요</option>
-              <option value="Dm2">부재 시 휴대폰으로 문자남겨주세요</option>
-              <option value="Dm3">집 앞에 놓아주세요</option>
+            <!-- <input type="hidden" id="dmessage_code" name="dmessage" value=""> -->
+            <select id="del_message1" name=dmessage style="height:20px; float:left; margin-right:3px;" onchange="del_message1(this.value)">
+              <option value="" selected="selected">요청사항 선택</option>
+              <option value="부재 시 경비실에 맡겨주세요">부재 시 경비실에 맡겨주세요</option>
+              <option value="부재 시 휴대폰으로 문자남겨주세요">부재 시 휴대폰으로 문자남겨주세요</option>
+              <option value="집 앞에 놓아주세요">집 앞에 놓아주세요</option>
               <option value="Dm">직접 입력</option>
             </select>
             <input type="text" id="del_message2" class="txt del_input" maxlength="50" value="" style="display:none;">
