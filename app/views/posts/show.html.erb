@@ -107,7 +107,7 @@
 <script>
 
   $('#options').change(function(){
-      $('.select_option').append(`옵션선택:  ${this.value} <br /> <input type="number" class="quantity" value="1"/> <hr />`);
+      $('.select_option').append(`옵션선택:  ${this.value} <br /> <input type="number" name="quantity" class="quantity" id="${this.value}_quantity" value="1"/> <hr />`);
   });
 
   // $('.quantity').change(function(data){
