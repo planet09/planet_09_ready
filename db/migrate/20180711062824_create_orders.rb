@@ -14,6 +14,7 @@ class CreateOrders < ActiveRecord::Migration
       t.datetime :pay_time
       t.integer :amount
       t.string :invoice_code
+      t.string :options
 
       t.integer :pay_met
       t.integer :curr_status
