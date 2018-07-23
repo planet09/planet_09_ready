@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :order, :buy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :order, :buy, :admin]
   before_action :authenticate_user!, except: :index
   load_and_authorize_resource
   def index
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def admin
-    
+    @orderlist=Order.order(created_at: :asc)
   end
 
 

@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180719015748) do
     t.datetime "pay_time"
     t.integer  "amount"
     t.string   "invoice_code"
+    t.integer  "pay_met"
+    t.integer  "curr_status"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

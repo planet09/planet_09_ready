@@ -1,3 +1,4 @@
+<div class="container-head">
 <div class="display-4 text-center">
   <%= @post.title %>
 </div>
@@ -34,9 +35,158 @@
           <td>진행기간</td>
           <td><%= @post.start_date %> ~ <%= @post.end_date %></td>
         </tr>
+          <label>목표달성률</label> <br>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 25%;  margin-right:50px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
       </tbody>
     </table>
-    <label>참여상황</label> <br>
+    <!-- <label>참여상황</label> <br>
     <div class="progress">
       <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div> -->
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class ="container-body">
+  <!--진행상황 -->
+  <div class="row" style="margin-top: 50px">
+  <div class="col justify-content" scope="col">
+    <label>주문접수</label> <br>
+    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
     </div>
+  </div>
+  <div class="col justify-content" scope="col">
+    <label>입금확인</label> <br>
+    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
+    </div>
+  </div>
+  <div class="col justify-content" scope="col">
+    <label>발송준비</label> <br>
+    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
+    </div>
+  </div>
+  <div class="col justify-content" scope="col">
+    <label>주문처리완료</label> <br>
+    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
+    </div>
+  </div>
+    <!-- <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;">
+      <label>입금확인</label> <br>
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
+    </div>
+    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;">
+      <label>발송준비</label> <br>
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
+    </div>
+    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:30px;">
+      <label>주문처리완료</label> <br>
+      <td scope="col" style="text-align:center">
+        middle
+      </td>
+    </div> -->
+
+    <!-- <div class="col" style="height: 120px; width: 120px;">
+      <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded align-middle"; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px;"><td class="align-middle">middle</td></span>
+    </div>
+    <div class="col">
+      <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded align-middle"; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px;"><td class="align-middle">middle</td></span>
+    </div>
+    <div class="col">
+      <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded align-middle"; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px;"><td class="align-middle">middle</td></span>
+    </div>
+    <div class="col">
+      <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded align-middle"; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px;"><td class="align-middle">middle</td></span>
+    </div> -->
+    <!-- <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded "; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px; margin-left: 30px;">58%</span>
+    <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded "; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px; margin-left: 30px;">58%</span>
+    <span class=" border rounded-circle shadow p-3 mb-5 bg-white rounded "; style="text-align: center; width: 120px; height: 120px;  background-color: rgba(0,0,255,.1); margin-top: 50px;margin-left: 30px;">58%</span> -->
+  </div>
+
+
+  <!--데이터 테이블 -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+       <tr>
+         <th scope="col">#</th>
+         <th scope="col">주문상품</th>
+         <th scope="col">참여자명</th>
+         <th scope="col">금액</th>
+         <th scope="col">결제일</th>
+         <th scope="col">결제수단</th>
+         <th scope="col">진행상태</th>
+       </tr>
+      </thead>
+     <tbody>
+       <% @orderlist.each_with_index do |order ,idx|%>
+         <tr>
+           <th scope="row"><h4><%=idx +1%></h4></th>
+           <td>order.</td>
+           <td>participatnt</td>
+           <td>25000</td>
+           <td>Date.today</td>
+           <td>카드결제</td>
+           <td>발송준비중</td>
+         </tr>
+       <% end %>
+
+       <% @orderlist.each_with_index do | ,idx|%>
+         <!-- 여기서 부터 -->
+         <div class="card" style="width:100%;">
+           <ul class="list-center" style="margin-top:16px">
+             <!-- 반복 -->
+             <!-- .each_with_index do |group, idx| -->
+             <!-- controller에서 넘길때 상위10개만뽑아서 넘겨야한당 -->
+             <li class="media" >
+               <div class="row" style="width:100%;">
+                 <div style="vertical-align:middle; width: 190px; margin-top: 80px ;"><h4><%=idx +1%>위</h4></div>
+                 <!-- <div class="col-sm"><img class="mr-3" src="/app/assets/images/redvelvet.jpg/64x64" alt="Generic placeholder image"></div> -->
+                  <div class="col-sm" style="width:64px; height: 90%; margin-top:3px"><%= image_tag (rank.url), :size => "260x180" %></div>
+                 <div class="col-sm align-middle" style=" margin-top: 55px;">
+                   <h5>#<%=rank.rankname%></h5></br>
+                   참여자투표 28,560,048
+                   <h6><%=rank.content%></h6>
+                 </div>
+               </div>
+             </li>
+           </ul>
+         </div>
+           <!-- 여기까지 -->
+       <% end %>
+       <!-- <tr>
+         <th scope="row">2</th>
+         <td>Jacob</td>
+         <td>Thornton</td>
+         <td>@fat</td>
+       </tr>
+       <tr>
+         <th scope="row">3</th>
+         <td colspan="2">Larry the Bird</td>
+         <td>@twitter</td>
+       </tr> -->
+     </tbody>
+    </table>
+  </div>
+</div>
