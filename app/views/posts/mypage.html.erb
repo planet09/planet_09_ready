@@ -1,16 +1,16 @@
-<h3>마이페이지</h3>
+<h5>마이페이지</h5>
 <%= image_tag current_user.profile_img, class: "rounded-circle profile-img"%>
   <span><%= current_user.email %></span>
 
 <div class="mypagebox">
-  <h3>참여한 플래닛</h3>
+  <h5>참여한 플래닛</h5>
 </div>
 
 <div class="mypagebox">
-  <h3>좋아요 플래닛</h3>
-  <div class="row">
+  <h5>좋아요 플래닛</h5>
+  <div class="row justify-content-center">
     <% @likeposts.each do |post| %>
-    <div class="card col-lg-3 col-md-4 col-sm-6">
+    <div class="card m-1">
       <%= link_to post do %>
       <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
       <% end %>
@@ -40,11 +40,11 @@
 </div>
 
 <div class="mypagebox">
-  <h3>주최한 플래닛</h3>
+  <h5>주최한 플래닛</h5>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <% @myposts.each do |post| %>
-    <div class="card col-lg-3 col-md-4 col-sm-6">
+    <div class="card m-1">
       <%= link_to post do %>
       <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
       <% end %>

@@ -87,7 +87,7 @@
 <div class="row">
 <% @posts.each do |post| %>
 
-<div class="card col-lg-3 col-md-4 col-sm-6">
+<div class="card m-1">
   <%= link_to post do %>
     <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
   <% end %>

@@ -118,7 +118,7 @@
       // var size = $(`#_quantity`).length);
       var d = $(`#options-${this.value}`).val();
       if ($(`#${this.value}_quantity`).val() == undefined && d != "d") {
-        $('.select_option').append(`옵션선택: ${text} <br /> <input type="hidden" name="option_${this.value}" value="${text}"/> <input type="number" name="quantity_${this.value}" class="quantity" id="${this.value}_quantity" value="1"/> <hr />`);
+        $('.select_option').append(`옵션선택: ${text} <br /> <input type="hidden" name="option[option_${this.value}]" value="${text}"/> <input type="number" name="quan[quantity_${this.value}]" class="quantity" id="${this.value}_quantity" value="1"/> <hr />`);
       }
   });
 

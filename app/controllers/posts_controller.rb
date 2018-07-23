@@ -50,6 +50,21 @@ class PostsController < ApplicationController
   end
 
   def order
+      @options = params[:option]
+      @quantity = params[:quan]
+      # puts @options
+      # puts @quantity
+      @result = Hash.new
+
+      @options.each do |key,val|
+        @result[val]=0
+      end
+
+      keys = @result.keys
+
+      @quantity.each_with_index do |(key,val),i|
+        @result[keys[i]] = val
+      end
   end
 
   def buy

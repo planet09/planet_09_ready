@@ -84,10 +84,10 @@
 <% if params[:tag] %>
   <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
 <% end %>
-<div class="row">
+<div class="row justify-content-center">
 <% @posts.each do |post| %>
 
-<div class="card col-lg-3 col-md-4 col-sm-6">
+<div class="card m-1">
   <%= link_to post do %>
     <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
   <% end %>
