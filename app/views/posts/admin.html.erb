@@ -1,0 +1,42 @@
+<div class="display-4 text-center">
+  <%= @post.title %>
+</div>
+<div class="text-center">
+  <%= image_tag @post.user.profile_img, class: "rounded-circle profile-img"%>
+  <%= @post.user.name %>
+</div>
+
+
+<div class="showheader row my-5">
+  <div class="col">
+    <%=image_tag @post.img.thumb_fill.url %>
+  </div>
+  <div class="col">
+    <table>
+      <tbody>
+        <tr>
+          <td>프로젝트명</td>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td>프로젝트 요약</td>
+          <td><%= @post.description %></td>
+        </tr>
+        <tr>
+          <td>가격</td>
+          <td id="price-<%= @post.id %>"><%= @post.price %> 원</td>
+        </tr>
+        <tr>
+          <td>계좌번호</td>
+          <td><%= @post.account %></td>
+        </tr>
+        <tr>
+          <td>진행기간</td>
+          <td><%= @post.start_date %> ~ <%= @post.end_date %></td>
+        </tr>
+      </tbody>
+    </table>
+    <label>참여상황</label> <br>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div>
