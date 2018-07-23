@@ -68,6 +68,7 @@ class PostsController < ApplicationController
   end
 
   def buy
+
     @orderform=Order.new
     @orderform.rcp_name = params[:rcp_name]
     @orderform.rcp_email = params[:rcp_email]
@@ -76,6 +77,11 @@ class PostsController < ApplicationController
     @orderform.detail_addr = params[:detail_addr]
     @orderform.del_msg = params[:dmessage]
     @orderform.post_code = params[:post_code]
+    if params[:op]
+      puts "****************"
+      puts params[:op]
+      @orderform.options = params[:op]
+    end
     @orderform.total_pay = @post.price * 5    #여기 옵션 갯수넘어오는거 받아서 다시처리
     @orderform.del_pay = 2500
     @orderform.or_time = Date.today
@@ -92,6 +98,24 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    puts "********************"
+    @option_hash = Hash.new
+
+    params[:post][:option].gsub(' ','').split('/').each do |option|
+      @option_hash[option] = 0
+    end
+
+    keys = @option_hash.keys
+
+    params[:post][:price].gsub(' ','').split('/').each_with_index do |price, index|
+      @option_hash[keys[index]] = price
+    end
+    @post.option_price = @option_hash
+
+
+    # @post.option_price =
+
+
     #@tags = params[:tags][:content].gsub(' ','').split("#")  #이미배열
     # @tags = ["#안녕, "#방탄소년단"]
 
@@ -161,7 +185,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :img , :account, :option, :account_name, :goal, :price, :start_date, :end_date, :description, :tag_list_fixed
+    params.require(:post).permit(:title, :content, :price, :option, :img , :account, :account_name, :goal, :start_date, :end_date, :description, :tag_list_fixed
                                   ) #넘어오는 파람 허가
     # params.require(:post).permit(:title, :content, :img , :start_date, :end_date, :description, tags_attributes: [:content]) #넘어오는 파람 허가
   end

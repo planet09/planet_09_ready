@@ -218,7 +218,9 @@
     주문자 동의
   </div>
 </div>
-
+<% @result.each_with_index do |(key,value),index| %>
+  <input type="hidden" name="op[option-<%= index %>]"value="<%= value %>">
+<% end %>
 <input type="submit" class= "btn btn-warning" value="최종주문하기">
 </form>
 

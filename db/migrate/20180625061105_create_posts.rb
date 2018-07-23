@@ -9,9 +9,10 @@ class CreatePosts < ActiveRecord::Migration
       t.string :account
       t.string :account_name
       t.integer :goal
-      t.integer :price
+      t.string :price
       t.text :content
       t.string :option
+      t.string :option_price
       t.string :rel_project1_url
       t.string :rel_project2_url
 
