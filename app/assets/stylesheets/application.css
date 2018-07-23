@@ -28,11 +28,6 @@
   border-bottom: 3px solid #99ffcc;
 }
 
- .card {
-   width: 18rem;
-   border-radius: 0;
- }
-
  #banner {
    height: 150px;
  }
@@ -52,9 +47,11 @@
      height: 15vw;
      object-fit: cover;
  }
- .col-lg-3 {
+ .card {
    padding-right: 0 !important;
    padding-left: 0 !important;
+   width: 16rem;
+   border-radius: 0;
  }
 
  .card-title{

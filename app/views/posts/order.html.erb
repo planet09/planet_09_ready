@@ -199,12 +199,13 @@
     결제정보
   </div>
   <div class="card-body" >
-    <p><%= params[:option_0] %>, <%= params[:quantity_0] %></p>
-    <p><%= params[:option_1] %>, <%= params[:quantity_1] %></p>
+    <% @result.each do |key,value| %>
+      <p><%= key %> : <%= value %></p>
+    <% end %>
+    <!-- <p><%#= params[:option_1] %>, <%#= params[:quantity_1] %></p> -->
   </div>
 </div>
 </br>
-
 <div class="card text-center" style="width: 90%;">
   <div class="card-header">
     결제방법
