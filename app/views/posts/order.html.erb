@@ -187,7 +187,13 @@
   <div class="card-body" >
     <tr>
       <td>총 결제금액</td>
-       <td><%= @post.price %></td>
+      <!-- <td><%#= @post.option_price %></td>
+      <td><%#= @result %></td> -->
+
+      <% @result.each do |key,value| %>
+         <td><%= key %> : <%= @post.option_price[key].to_i * value.to_i %></td>
+      <% end %>
+
       <!-- <td><%#= @orderform.total_pay %></td> -->
     </tr>
   </div>
