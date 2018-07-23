@@ -43,9 +43,9 @@
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
       <label for="exampleFormControlSelect1">옵션선택</label>
       <select name = "options" class="form-control" id="options">
-        <option selected>옵션선택</option>
-          <% @option.each do |o| %>
-          <option class="option" value="<%= o %>"><%= o %></option>
+        <option selected value="d" id="options-d">옵션선택</option>
+          <% @option.each_with_index do |o,i| %>
+          <option class="option" value="<%= i %>" id="options-<%= i %>"><%= o %></option>
           <% end %>
       </select>
 
@@ -114,7 +114,12 @@
 <script>
 
   $('#options').change(function(){
-      $('.select_option').append(`옵션선택:  ${this.value} <br /> <input type="number" name="quantity" class="quantity" id="${this.value}_quantity" value="1"/> <hr />`);
+      var text = $(`#options-${this.value}`).text();
+      // var size = $(`#_quantity`).length);
+      var d = $(`#options-${this.value}`).val();
+      if ($(`#${this.value}_quantity`).val() == undefined && d != "d") {
+        $('.select_option').append(`옵션선택: ${text} <br /> <input type="hidden" name="option_${this.value}" value="${text}"/> <input type="number" name="quantity_${this.value}" class="quantity" id="${this.value}_quantity" value="1"/> <hr />`);
+      }
   });
 
   // $('.quantity').change(function(data){
