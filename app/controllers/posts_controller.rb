@@ -81,14 +81,27 @@ class PostsController < ApplicationController
       puts "****************"
       puts params[:op]
       @orderform.options = params[:op]
+
+      # @orderform.options = params[:op]
     end
-    @orderform.total_pay = @post.price * 5    #여기 옵션 갯수넘어오는거 받아서 다시처리
+
+    total_pay = 0
+
+    params[:op].each do |key, value|
+      puts "***********"
+      total_pay += @post.option_price[key].to_i * value.to_i
+    end
+
+    @orderform.total_pay = total_pay #여기 옵션 갯수넘어오는거 받아서 다시처리
+
     @orderform.del_pay = 2500
     @orderform.or_time = Date.today
     @orderform.pay_time = Date.today
     @orderform.amount = params[:amount]
     @orderform.invoice_code = params[:invoice_code]
     @orderform.save
+
+
 
   end
 
