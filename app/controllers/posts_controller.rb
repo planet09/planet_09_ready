@@ -30,6 +30,7 @@ class PostsController < ApplicationController
 
   def admin
     @orderlist=@post.orders
+    puts @orderlist
 
     # @quantity #옵션 별 수량
     # @key=Order.find(@post.id==params[:id]).options.key
@@ -51,6 +52,11 @@ class PostsController < ApplicationController
    end
 
   def rank
+    #더미데이터를 넣겠음
+    #Dummyarr = []
+    #Dummyarr.each { |a| puts a }
+    #Dummyrank.create(rankname:"#트와이스","")
+
       @rank = Dummyrank.order(created_at: :asc).limit(10)
       #수정해야함 일단 예시로 담음
   end
@@ -89,11 +95,11 @@ class PostsController < ApplicationController
       puts params[:op]
       @orderform.options = params[:op]
 
-      # @orderform.options = params[:op]
+    # @orderform.options = params[:op]
     end
 
     total_pay = 0
-
+    #가격
     params[:op].each do |key, value|
       puts "***********"
       total_pay += @post.option_price[key].to_i * value.to_i
