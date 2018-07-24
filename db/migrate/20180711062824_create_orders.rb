@@ -15,7 +15,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :amount
       t.string :invoice_code
       t.string :options
-
+      t.integer :post_id
       t.integer :pay_met
       t.integer :curr_status
 

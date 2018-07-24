@@ -182,7 +182,7 @@
 
 <div class="card text-center" style="width: 90%;">
     <div class="card-header">
-      결제정보
+      결제수량
     </div>
   <div class="card-body" >
     <tr>
@@ -192,7 +192,8 @@
 
       <% @result.each do |key,value| %>
          <!-- <td><%#= key %> : <%#= @post.option_price[key].to_i * value.to_i %></td> -->
-          <td><%=key%>*<%=value%>개</td>
+          <p><%= key %> : <%= value %></p>
+          <td><%=@post.option_price[key].to_i%>*<%=value%>개</td>
           <p></p>
          <!-- <p><%#= key %> : <%#= value %></p> -->
       <% end %>
@@ -208,10 +209,17 @@
     결제정보
   </div>
   <div class="card-body" >
-    <% @result.each do |key,value| %>
-      <p><%= key %> : <%= value %></p>
-    <% end %>
-    <!-- <p><%#= params[:option_1] %>, <%#= params[:quantity_1] %></p> -->
+    <tr>
+      <td>총 결제금액</td>
+      <% total=0 %>
+      <% @result.each do |key,value| %>
+        <% total+=@post.option_price[key].to_i * value.to_i %>
+        <!-- <p><%#= key %> : <%#= value %></p> -->
+      <% end %>
+      <td><%= total %></td>
+      <!-- <p><%#= params[:option_1] %>, <%#= params[:quantity_1] %></p> -->
+    </tr>
+
   </div>
 </div>
 </br>
