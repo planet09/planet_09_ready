@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable ,
          :omniauthable, omniauth_providers: [:facebook, :kakao]
   has_many :posts
+  has_many :orders
   has_many :comments
   has_many :likes
   has_many :liked_posts, through: :likes, source: :post

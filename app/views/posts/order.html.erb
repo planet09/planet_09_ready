@@ -1,9 +1,10 @@
 
 
-<div class="text-center" style="width: 90%;">
-  <h3>주문하기</h3>
-</div>
-</br>
+
+    <div class="text-center my-5" style="width: 100%;">
+      <h3>주문하기</h3>
+    </div>
+    </br>
 
 <form class="form-group" action="/posts/<%= @post.id %>/buy" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -43,12 +44,12 @@
 <!-- </div>
 </br> -->
 
-<div class="card text" style="width: 90%;">
+<div class="card" style="width: 100%;">
   <div class="card-header text-center">
     받는사람 정보
   </div>
   <!-- 여기서부터 -->
-  <div class="card-body" >
+  <div class="card-body px-5" >
     <div class="address_select_wrap">
         <span class="address_select">
           <input id="chk_sameinfo" name="chk_sameinfo" type="checkbox" value="Y" />
@@ -180,7 +181,7 @@
   <!-- 여기까지 -->
 </div>
 
-<div class="card text-center" style="width: 90%;">
+<div class="card text-center" style="width: 100%;">
     <div class="card-header">
       결제수량
     </div>
@@ -202,9 +203,8 @@
     </tr>
   </div>
 </div>
-</br>
 
-<div class="card text-center" style="width: 90%;">
+<div class="card text-center" style="width: 100%;">
   <div class="card-header">
     결제정보
   </div>
@@ -216,30 +216,34 @@
         <% total+=@post.option_price[key].to_i * value.to_i %>
         <!-- <p><%#= key %> : <%#= value %></p> -->
       <% end %>
-      <td><%= total %></td>
+      <td><%= total %> 원</td>
       <!-- <p><%#= params[:option_1] %>, <%#= params[:quantity_1] %></p> -->
     </tr>
 
   </div>
 </div>
-</br>
-<div class="card text-center" style="width: 90%;">
+
+<div class="card text-center" style="width: 100%;">
   <div class="card-header">
     결제방법
   </div>
   <div class="card-body" >
-
+    무통장입금
 
   </div>
   <div class="card-footer text-muted">
     주문자 동의
   </div>
 </div>
-<% @result.each_with_index do |(key,value),index| %>
-  <input type="hidden" name="op[<%= key %>]" value="<%= value %>">
-<% end %>
-<input type="submit" class= "btn btn-warning" value="최종주문하기">
+  <% @result.each_with_index do |(key,value),index| %>
+    <input type="hidden" name="op[<%= key %>]" value="<%= value %>">
+  <% end %>
+  <div class="text-center my-3">
+    <input type="submit" class= "btn btn-outline-secondary" value="최종주문하기">
+  </div>
 </form>
+
+
 
 <!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>

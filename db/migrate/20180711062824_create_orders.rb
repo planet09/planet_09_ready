@@ -16,9 +16,9 @@ class CreateOrders < ActiveRecord::Migration
       t.string :invoice_code
       t.string :options
       t.integer :post_id
+      t.integer :user_id
       t.integer :pay_met
       t.integer :curr_status
-
       t.timestamps null: false
     end
   end
