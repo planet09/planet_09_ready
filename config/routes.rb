@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  get '/posts/group' => 'posts#group'
-  get '/posts/mypage' => 'posts#mypage'
+  get 'posts/group' => 'posts#group'
+  get 'posts/mypage' => 'posts#mypage'
   get 'posts/rank' => 'posts#rank'
   post 'posts/:id/order' => 'posts#order'
   post 'posts/:id/buy' => 'posts#buy'

@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   load_and_authorize_resource
   def index
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(5)
+      @posts = Post.tagged_with(params[:tag]).order(created_at: :desc).page(params[:page]).per(4)
     else
-      @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(4)
     end
     respond_to do |format|
       format.html

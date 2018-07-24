@@ -18,6 +18,10 @@
   font-family: 'WONDotum';
 }
 
+p{
+  margin-bottom: 0 !important;
+}
+
 .navbar-collapse{
   border-top: 1px solid #b3b3b3
 }
@@ -27,6 +31,12 @@
 .nav-item:hover{
   border-bottom: 3px solid #99ffcc;
 }
+
+/* .navbar-nav.navbar-center {
+    position: relative;
+    left: 50%;
+    transform: translatex(-50%);
+} */
 
  #banner {
    height: 150px;
