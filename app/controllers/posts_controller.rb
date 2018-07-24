@@ -51,6 +51,15 @@ class PostsController < ApplicationController
       end
    end
 
+   #안드로이드 sms파싱코드
+   def read
+    @money = params[:money]
+    @name= params[:name]
+
+    logger.info "된다~~~"
+  end
+
+
   def rank
     #더미데이터를 넣겠음
     #Dummyarr = []
