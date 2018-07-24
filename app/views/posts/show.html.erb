@@ -36,7 +36,7 @@
     </table>
     <label>참여상황</label> <br>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      <div class="progress-bar" role="progressbar" style="width: <%= @post.orders.count*100/@post.goal %>%;" aria-valuenow="<%= @post.orders.count*100/@post.goal %>" aria-valuemin="0" aria-valuemax="100"><%= @post.orders.count*100/@post.goal %>%</div>
     </div>
 
   <form class="form-group" action="/posts/<%=@post.id%>/order" method="post">
@@ -57,7 +57,7 @@
       </div> -->
 
     <div class="text-center my-5">
-      <input type="submit" class= "btn btn-warning" value="주문하기">
+      <input type="submit" class= "btn btn-outline-secondary" value="주문하기">
     </div>
 
   </form>
@@ -93,7 +93,7 @@
   <%#= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
 <% end %>
 <hr />
-
+<h5>댓글</h5>
 <form action="/posts/<%= @post.id%>/comments" method="post" data-remote=true>
   <input type="text" name="content" /><br />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -103,9 +103,10 @@
 
 <div id="comments">
   <% @comments.each do |comment| %>
+    <!-- <strong><%= User.find(comment.user_id).name %></strong> -->
     <p>
       <%= comment.content %>
-      <%= link_to '댓글 삭제하기', destroy_comment_path(comment.id), remote: true, method: :delete, class:"delete_comment" %>
+      <%= link_to '삭제하기', destroy_comment_path(comment.id), remote: true, method: :delete, class:"delete_comment" %>
     </p>
     <hr />
   <% end %>
@@ -118,7 +119,7 @@
       // var size = $(`#_quantity`).length);
       var d = $(`#options-${this.value}`).val();
       if ($(`#${this.value}_quantity`).val() == undefined && d != "d") {
-        $('.select_option').append(`옵션선택: ${text} <br /> <input type="hidden" name="option[option_${this.value}]" value="${text}"/> <input type="number" name="quan[quantity_${this.value}]" class="quantity" id="${this.value}_quantity" value="1"/> <hr />`);
+        $('.select_option').append(`옵션선택: ${text} <br /> <input type="hidden" name="option[option_${this.value}]" value="${text}"/> <input type="number" name="quan[quantity_${this.value}]" class="quantity" id="${this.value}_quantity" value="1" min="1" max="100"/> <hr />`);
       }
   });
 
