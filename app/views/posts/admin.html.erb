@@ -35,56 +35,49 @@
           <td>진행기간</td>
           <td><%= @post.start_date %> ~ <%= @post.end_date %></td>
         </tr>
-          <label>목표달성률</label> <br>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;  margin-right:50px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-          </div>
       </tbody>
     </table>
-    <!-- <label>참여상황</label> <br>
+    <label>목표달성률</label> <br>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-    </div> -->
+      <div class="progress-bar" role="progressbar" style="width: <%= @post.orders.count*100/@post.goal %>%;" aria-valuenow="<%= @post.orders.count*100/@post.goal %>" aria-valuemin="0" aria-valuemax="100"><%= @post.orders.count*100/@post.goal %>%</div>
+    </div>
 </div>
 </div>
 </div>
-
-
-
 
 
 <div class ="container-body">
   <!--진행상황 -->
   <div class="row" style="margin-top: 50px">
-  <div class="col justify-content" scope="col">
-    <label>주문접수</label> <br>
-    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
-      <td scope="col" style="text-align:center">
-        middle
+  <div class="col text-center" scope="col">
+    <h5>주문접수</h5>
+    <div class="border rounded-circle shadow p-3 mb-5 mx-auto bg-white rounded row align-items-center justify-content-center" style="height:120px; width:120px;">
+      <td scope="col text-center">
+        <h1><%= @orderlist.count %></h1>
       </td>
     </div>
   </div>
-  <div class="col justify-content" scope="col">
-    <label>입금확인</label> <br>
-    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
-      <td scope="col" style="text-align:center">
-        middle
+  <div class="col text-center" scope="col">
+    <h5>입금확인</h5>
+    <div class="border rounded-circle shadow p-3 mb-5 mx-auto bg-white rounded row align-items-center justify-content-center" style="height:120px; width:120px;">
+      <td scope="col text-center">
+          <h1><%= @orderlist.count %></h1>
       </td>
     </div>
   </div>
-  <div class="col justify-content" scope="col">
-    <label>발송준비</label> <br>
-    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
-      <td scope="col" style="text-align:center">
-        middle
+  <div class="col text-center" scope="col">
+    <h5>발송준비</h5>
+    <div class="border rounded-circle shadow p-3 mb-5 bg-white mx-auto rounded row align-items-center justify-content-center" style="height:120px; width:120px;">
+      <td scope="col text-center">
+        <h1>0</h1>
       </td>
     </div>
   </div>
-  <div class="col justify-content" scope="col">
-    <label>주문처리완료</label> <br>
-    <div class="col border rounded-circle shadow p-3 mb-5 bg-white rounded text-center" style="height:120px; width:120px; margin-right:50px;margin-left:30px;">
-      <td scope="col" style="text-align:center">
-        middle
+  <div class="col text-center" scope="col">
+    <h5>주문처리완료</h5>
+    <div class="border rounded-circle shadow p-3 mb-5 bg-white mx-auto rounded row align-items-center justify-content-center" style="height:120px; width:120px;">
+      <td scope="col text-center">
+        <h1>0</h1>
       </td>
     </div>
   </div>
@@ -129,7 +122,7 @@
   <div class="table-responsive">
     <table class="table">
       <thead>
-       <tr>
+       <tr class = "text-center">
          <th scope="col">#</th>
          <th scope="col">주문상품</th>
          <th scope="col">참여자명</th>
@@ -142,14 +135,14 @@
       </thead>
      <tbody>
        <% @orderlist.each_with_index do |order ,idx|%>
-         <tr>
+         <tr class = "text-center">
            <th scope="row"><h4><%=idx +1%></h4></th>
            <td><%=order.options%></td>
            <td><%=order.rcp_name%></td>
            <td><%=order.total_pay%></td>
            <td><%=order.or_time%></td>
-           <td>카드결제</td>
-           <td>발송준비중</td>
+           <td>무통장입금</td>
+           <td>입금확인</td>
            <td><%=order.invoice_code%></td>
         </tr>
        <% end %>

@@ -77,17 +77,17 @@
 
 <!-- <%=image_tag @post.img.thumb_fill.url%> -->
 <% if can? :edit, @post %>
-  <%= link_to '수정하기', edit_post_path(@post) %>
+  <%= link_to '수정하기', edit_post_path(@post), class: "btn btn-outline-secondary" %>
 <% end %>
 <% if can? :destroy, @post %>
   <%= link_to '삭제하기',
-                      @post,
+                      @post, class: "btn btn-outline-secondary",
                       method: :delete,
                       data: {confirm: '삭제하시겠습니까?'} %>
 <% end %>
 <% if can? :admin, @post %> <!--권한부여  근데이거 겟으로넘겨도됨?-->
   <%= link_to '관리자페이지',
-                      "/posts/#{@post.id}/admin",
+                      "/posts/#{@post.id}/admin", class: "btn btn-outline-secondary",
                       method: :post,
                       data: {confirm: '관리자페이지로 넘어가시겠습니까?'} %>
   <%#= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>

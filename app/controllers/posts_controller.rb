@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :order, :buy, :admin]
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index,:show]
   load_and_authorize_resource
   def index
     if params[:tag]

@@ -29,7 +29,10 @@
     <%#= t.input :content, label: '해시태그를 입력해주세요 ( ex. #방탄소년단 #야광봉 #티셔츠 )', input_html: {value: @tags} %>
   <%# end %>
   <%=tinymce%>
-  <%= f.button :submit, class: "btn btn-outline-secondary" %>
+  <div class="text-center">
+    <%= f.button :submit, class: "btn btn-outline-secondary" %>
+  </div>
+  
 <% end %>
 
 
