@@ -29,7 +29,13 @@ class PostsController < ApplicationController
   end
 
   def admin
-    @orderlist=Order.order(created_at: :asc)
+    @orderlist=@post.orders
+
+    # @quantity #옵션 별 수량
+    # @key=Order.find(@post.id==params[:id]).options.key
+    # @valuse=Order.find(@post.id).options.value
+    # @post = Post.find(params[:id])
+
   end
 
 
@@ -77,6 +83,7 @@ class PostsController < ApplicationController
     @orderform.detail_addr = params[:detail_addr]
     @orderform.del_msg = params[:dmessage]
     @orderform.post_code = params[:post_code]
+    @orderform.post_id = params[:id]
     if params[:op]
       puts "****************"
       puts params[:op]
@@ -92,16 +99,13 @@ class PostsController < ApplicationController
       total_pay += @post.option_price[key].to_i * value.to_i
     end
 
-    @orderform.total_pay = total_pay #여기 옵션 갯수넘어오는거 받아서 다시처리
-
+    @orderform.total_pay = total_pay #totalpay 계산
     @orderform.del_pay = 2500
     @orderform.or_time = Date.today
     @orderform.pay_time = Date.today
     @orderform.amount = params[:amount]
     @orderform.invoice_code = params[:invoice_code]
     @orderform.save
-
-
 
   end
 
