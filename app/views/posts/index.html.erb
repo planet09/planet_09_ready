@@ -99,7 +99,7 @@
     <p><i class="fas fa-tags"></i> <%= tag_icons post.tag_list%></p>
   </div>
   <div class="progress" style="height: 5px;">
-    <div class="progress-bar" role="progressbar" style="width: <%= post.orders.count*100/post.goal %>%" aria-valuenow="<%= post.orders.count*100/post.goal %>" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar" role="progressbar" style="width: <%= @post.orders.count*100/post.goal %>%" aria-valuenow="<%= post.orders.count*100/post.goal %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
   <div class="card-body">
     <div class="row">
