@@ -1,74 +1,141 @@
-<h5>마이페이지</h5>
-<%= image_tag current_user.profile_img, class: "rounded-circle profile-img"%>
-  <span><%= current_user.email %></span>
 
-<div class="mypagebox">
+<div class="profilebox text-center my-5">
+  <%= image_tag current_user.profile_img, class: "rounded-circle profile-img-mypage"%>
+    <p><%= current_user.name %>님</p>
+</div>
+
+
+<div class="mypagebox p-4">
   <h5>참여한 플래닛</h5>
+  <% if params[:tag] %>
+    <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
+  <% end %>
+  <div class="row justify-content-center">
+  <% @posts.each do |post| %>
+
+  <div class="card m-1">
+    <%= link_to post do %>
+      <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
+    <% end %>
+    <div class="card-body text-center">
+      <!-- <h5 class="card-title"><%= post.title %></h5> -->
+      <%= link_to "<h5>#{post.title}</h5>".html_safe, post, class: "card-title" %>
+      <p class="card-text"><%= post.user.email %> </p>
+      <!-- <p class="card-text"><%# post.description %></p> -->
+      <p><i class="fas fa-tags"></i> <%= tag_icons post.tag_list%></p>
+    </div>
+    <div class="progress" style="height: 5px;">
+      <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm"><p class="card-text text-center"><i class="far fa-calendar-alt"></i> D-<%=(post.end_date - Date.current).to_i %></p></div>
+        <div class="col-sm">
+          <p class="card-text text-center"><% if current_user and current_user.liked_posts.include? post %>
+            <%= link_to "/posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+        <% else %>
+            <%= link_to "/posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+        <% end %>
+        <span><%= post.liked_users.count %></span> </p>
+      </div>
+        <div class="col-sm"> <p class="card-text text-right">25%</p> </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  </div>
 </div>
 
-<div class="mypagebox">
+<div class="mypagebox p-4">
   <h5>좋아요 플래닛</h5>
+  <% if params[:tag] %>
+    <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
+  <% end %>
   <div class="row justify-content-center">
-    <% @likeposts.each do |post| %>
-    <div class="card m-1">
-      <%= link_to post do %>
+  <% @likeposts.each do |post| %>
+
+  <div class="card m-1">
+    <%= link_to post do %>
       <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
-      <% end %>
-      <div class="progress" style="height: 5px;">
-        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+    <% end %>
     <div class="card-body text-center">
-      <% if current_user and current_user.liked_posts.include? post %>
-          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
-      <% else %>
-          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
-            <i class="far fa-heart"></i>
-          <% end %>
-      <% end %>
-      <span><%= post.liked_users.count %></span>
       <!-- <h5 class="card-title"><%= post.title %></h5> -->
       <%= link_to "<h5>#{post.title}</h5>".html_safe, post, class: "card-title" %>
-      <p class="card-text"> <%= post.user.email %> </p>
-      <p class="card-text"><%= post.description %></p>
-      <%= tag_icons post.tag_list%>
+      <p class="card-text"><%= post.user.email %> </p>
+      <!-- <p class="card-text"><%# post.description %></p> -->
+      <p><i class="fas fa-tags"></i> <%= tag_icons post.tag_list%></p>
+    </div>
+    <div class="progress" style="height: 5px;">
+      <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm"><p class="card-text text-center"><i class="far fa-calendar-alt"></i> D-<%=(post.end_date - Date.current).to_i %></p></div>
+        <div class="col-sm">
+          <p class="card-text text-center"><% if current_user and current_user.liked_posts.include? post %>
+            <%= link_to "/posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+        <% else %>
+            <%= link_to "/posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+        <% end %>
+        <span><%= post.liked_users.count %></span> </p>
+      </div>
+        <div class="col-sm"> <p class="card-text text-right">25%</p> </div>
+      </div>
     </div>
   </div>
-    <% end %>
+  <% end %>
   </div>
 </div>
 
-<div class="mypagebox">
+<div class="mypagebox p-4">
   <h5>주최한 플래닛</h5>
-
+  <% if params[:tag] %>
+    <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
+  <% end %>
   <div class="row justify-content-center">
-    <% @myposts.each do |post| %>
-    <div class="card m-1">
-      <%= link_to post do %>
+  <% @myposts.each do |post| %>
+
+  <div class="card m-1">
+    <%= link_to post do %>
       <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
-      <% end %>
-      <div class="progress" style="height: 5px;">
-        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+    <% end %>
     <div class="card-body text-center">
-      <% if current_user and current_user.liked_posts.include? post %>
-          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
-      <% else %>
-          <%= link_to "posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
-            <i class="far fa-heart"></i>
-          <% end %>
-      <% end %>
-      <span><%= post.liked_users.count %></span>
       <!-- <h5 class="card-title"><%= post.title %></h5> -->
       <%= link_to "<h5>#{post.title}</h5>".html_safe, post, class: "card-title" %>
-      <p class="card-text"> <%= post.user.email %> </p>
-      <p class="card-text"><%= post.description %></p>
-      <%= tag_icons post.tag_list%>
+      <p class="card-text"><%= post.user.email %> </p>
+      <!-- <p class="card-text"><%# post.description %></p> -->
+      <p><i class="fas fa-tags"></i> <%= tag_icons post.tag_list%></p>
+    </div>
+    <div class="progress" style="height: 5px;">
+      <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm"><p class="card-text text-center"><i class="far fa-calendar-alt"></i> D-<%=(post.end_date - Date.current).to_i %></p></div>
+        <div class="col-sm">
+          <p class="card-text text-center"><% if current_user and current_user.liked_posts.include? post %>
+            <%= link_to "/posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :delete do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+        <% else %>
+            <%= link_to "/posts/#{post.id}/like", data: {id: post.id}, remote: true, method: :put do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+        <% end %>
+        <span><%= post.liked_users.count %></span> </p>
+      </div>
+        <div class="col-sm"> <p class="card-text text-right">25%</p> </div>
+      </div>
     </div>
   </div>
-    <% end %>
+  <% end %>
   </div>
 </div>
