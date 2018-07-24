@@ -5,11 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'csv'
 
-CSV.foreach(Rails.root.join('db', 'seed.csv'), {headers: true, encoding: "UTF-8"}) do |row|
-  Post.create! row.to_hash
-end
+
+
+Dummyrank.create(rankname:"트와이스",content:"#트와이스 #쯔위 #정연 #What Is Love",url:"twice.jpg")
+Dummyrank.create(rankname:"방탄소년단",content:"#bts #방탄 #뷔 #뷔 생일",url:"bts.jpg")
+Dummyrank.create(rankname:"레드벨벳",content:"#redvelvet #레벨이들",url:"redvelvet.jpg")
+Dummyrank.create(rankname:"mamamoo",content:"#마마무 #도른자들 #화사",url:"mamamoo.jpg")
+Dummyrank.create(rankname:"워너원",content:"#wanna #Beautiful",url:"wanna.jpg")
+Dummyrank.create(rankname:"Exo",content:"#Exo #엑소 #카이",url:"exo.jpg")
+Dummyrank.create(rankname:"BlackPink",content:"#블핑이들 #블랙핑크",url:"blackpink.png")
+Dummyrank.create(rankname:"태연",content:"#태연 #소녀시대 #I",url:"taeyeon.jpg")
+Dummyrank.create(rankname:"위너",content:"#winner #위너",url:"winner.jpg")
+Dummyrank.create(rankname:"Nell",content:"#넬 #기억",url:"nell.jpg")
+
+
+
+
+
+
 
 # require 'faker'
 #

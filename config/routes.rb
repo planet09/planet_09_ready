@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post 'posts/:id/admin' => 'posts#admin'
 
   #안드로이드 코드
-  get '/sendData/:money/:name'=> 'check#read'
+  get '/sendData/:money/:name'=> 'posts#read'
 
 
   resources :posts
