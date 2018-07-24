@@ -191,7 +191,10 @@
       <td><%#= @result %></td> -->
 
       <% @result.each do |key,value| %>
-         <td><%= key %> : <%= @post.option_price[key].to_i * value.to_i %></td>
+         <!-- <td><%#= key %> : <%#= @post.option_price[key].to_i * value.to_i %></td> -->
+          <td><%=key%>*<%=value%>개</td>
+          <p></p>
+         <!-- <p><%#= key %> : <%#= value %></p> -->
       <% end %>
 
       <!-- <td><%#= @orderform.total_pay %></td> -->
@@ -225,7 +228,7 @@
   </div>
 </div>
 <% @result.each_with_index do |(key,value),index| %>
-  <input type="hidden" name="op[option-<%= index %>]"value="<%= value %>">
+  <input type="hidden" name="op[<%= key %>]" value="<%= value %>">
 <% end %>
 <input type="submit" class= "btn btn-warning" value="최종주문하기">
 </form>
