@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   post 'posts/:id/buy' => 'posts#buy'
   post 'posts/:id/admin' => 'posts#admin'
 
+  #안드로이드 코드
+  get '/sendData/:money/:name'=> 'check#read'
+
 
   resources :posts
   put '/posts/:post_id/like' => 'likes#create'
