@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180719015748) do
     t.string   "invoice_code"
     t.string   "options"
     t.integer  "post_id"
+    t.integer  "user_id"
     t.integer  "pay_met"
     t.integer  "curr_status"
     t.datetime "created_at",   null: false

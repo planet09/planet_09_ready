@@ -16,9 +16,11 @@ class PostsController < ApplicationController
 
   def mypage
     if params[:tag]
+      @orderposts = current_user.orders
       @myposts = current_user.posts.tagged_with(params[:tag]).order(created_at: :desc).first(4)
       @likeposts = current_user.liked_posts.tagged_with(params[:tag]).order(created_at: :desc).first(4)
     else
+      @orderposts = current_user.orders
       @myposts = current_user.posts.order(created_at: :desc).first(4)
       @likeposts = current_user.liked_posts.order(created_at: :desc).first(4)
     end
@@ -99,6 +101,7 @@ class PostsController < ApplicationController
     @orderform.del_msg = params[:dmessage]
     @orderform.post_code = params[:post_code]
     @orderform.post_id = params[:id]
+    @orderform.user_id = current_user.id
     if params[:op]
       puts "****************"
       puts params[:op]

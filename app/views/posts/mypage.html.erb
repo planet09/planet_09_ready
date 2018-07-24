@@ -4,15 +4,13 @@
     <p><%= current_user.name %>님</p>
 </div>
 
-
 <div class="mypagebox p-4">
   <h5>참여한 플래닛</h5>
   <% if params[:tag] %>
     <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
   <% end %>
-  <div class="row justify-content-center">
+  <div class="row">
   <% @posts.each do |post| %>
-
   <div class="card m-1">
     <%= link_to post do %>
       <%= image_tag post.img.thumb_fill.url, class: "card-img-top"  %>
@@ -55,7 +53,7 @@
   <% if params[:tag] %>
     <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
   <% end %>
-  <div class="row justify-content-center">
+  <div class="row">
   <% @likeposts.each do |post| %>
 
   <div class="card m-1">
@@ -100,7 +98,7 @@
   <% if params[:tag] %>
     <h2>post tagged with "<%= params[:tag] %>" <small>(<%= @posts.size %>)</small></h2>
   <% end %>
-  <div class="row justify-content-center">
+  <div class="row">
   <% @myposts.each do |post| %>
 
   <div class="card m-1">
