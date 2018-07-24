@@ -137,18 +137,20 @@
          <th scope="col">결제일</th>
          <th scope="col">결제수단</th>
          <th scope="col">진행상태</th>
+         <th scope="col">송장</th>
        </tr>
       </thead>
      <tbody>
        <% @orderlist.each_with_index do |order ,idx|%>
          <tr>
            <th scope="row"><h4><%=idx +1%></h4></th>
-           <td><%=@key%></td>
-           <td>participatnt</td>
-           <td>25000</td>
-           <td>Date.today</td>
+           <td><%=order.options%></td>
+           <td><%=order.rcp_name%></td>
+           <td><%=order.total_pay%></td>
+           <td><%=order.or_time%></td>
            <td>카드결제</td>
            <td>발송준비중</td>
+           <td><%=order.invoice_code%></td>
         </tr>
        <% end %>
      </tbody>
