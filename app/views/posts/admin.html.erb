@@ -143,49 +143,14 @@
        <% @orderlist.each_with_index do |order ,idx|%>
          <tr>
            <th scope="row"><h4><%=idx +1%></h4></th>
-           <td>order.</td>
+           <td><%=@key%></td>
            <td>participatnt</td>
            <td>25000</td>
            <td>Date.today</td>
            <td>카드결제</td>
            <td>발송준비중</td>
-         </tr>
+        </tr>
        <% end %>
-
-       <%#@orderlist.each_with_index do | ,idx|%>
-         <!-- 여기서 부터 -->
-         <!-- <div class="card" style="width:100%;">
-           <ul class="list-center" style="margin-top:16px"> -->
-             <!-- 반복 -->
-             <!-- .each_with_index do |group, idx| -->
-             <!-- controller에서 넘길때 상위10개만뽑아서 넘겨야한당 -->
-             <!-- <li class="media" >
-               <div class="row" style="width:100%;">
-                 <div style="vertical-align:middle; width: 190px; margin-top: 80px ;"><h4><%#=idx +1%>위</h4></div> -->
-                 <!-- <div class="col-sm"><img class="mr-3" src="/app/assets/images/redvelvet.jpg/64x64" alt="Generic placeholder image"></div> -->
-                  <!-- <div class="col-sm" style="width:64px; height: 90%; margin-top:3px"><%= image_tag (rank.url), :size => "260x180" %></div>
-                 <div class="col-sm align-middle" style=" margin-top: 55px;">
-                   <h5>#<%#=rank.rankname%></h5></br>
-                   참여자투표 28,560,048
-                   <h6><%#=rank.content%></h6>
-                 </div>
-               </div>
-             </li>
-           </ul>
-         </div> -->
-           <!-- 여기까지 -->
-       <%#end %>
-       <!-- <tr>
-         <th scope="row">2</th>
-         <td>Jacob</td>
-         <td>Thornton</td>
-         <td>@fat</td>
-       </tr>
-       <tr>
-         <th scope="row">3</th>
-         <td colspan="2">Larry the Bird</td>
-         <td>@twitter</td>
-       </tr> -->
      </tbody>
     </table>
   </div>
