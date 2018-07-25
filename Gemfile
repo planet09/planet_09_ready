@@ -4,6 +4,7 @@ gem 'acts-as-taggable-on', '~> 4.0'
 
 gem 'aws-sdk-s3'
 
+
 # 언어설정
 gem 'rails-i18n', '~> 4.0'
 gem 'devise-i18n'
