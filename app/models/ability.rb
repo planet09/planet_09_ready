@@ -1,4 +1,4 @@
-class Ability
+class Ability         #여기서, 권한설정 다시해야함.. 다시 만들때는 컨트롤러 분리할것
   include CanCan::Ability
 
   def initialize(user)
