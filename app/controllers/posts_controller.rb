@@ -62,33 +62,9 @@ class PostsController < ApplicationController
   end
 
 
-  def rank
-    #더미데이터를 넣겠음
-    #Dummyarr = []
-    #Dummyarr.each { |a| puts a }
-    #Dummyrank.create(rankname:"#트와이스","")
 
-      @rank = Dummyrank.order(created_at: :asc).limit(10)
-      #수정해야함 일단 예시로 담음
-  end
 
-  def order
-      @options = params[:option]
-      @quantity = params[:quan]
-      # puts @options
-      # puts @quantity
-      @result = Hash.new
 
-      @options.each do |key,val|
-        @result[val]=0
-      end
-
-      keys = @result.keys
-
-      @quantity.each_with_index do |(key,val),i|
-        @result[keys[i]] = val
-      end
-  end
 
   def buy
 

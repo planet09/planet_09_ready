@@ -1,6 +1,26 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  def order
+      @options = params[:option]
+      @quantity = params[:quan]
+      # puts @options
+      # puts @quantity
+      @result = Hash.new
+
+      @options.each do |key,val|
+        @result[val]=0
+      end
+
+      keys = @result.keys
+
+      @quantity.each_with_index do |(key,val),i|
+        @result[keys[i]] = val
+      end
+  end
+
+
+
   # GET /orders
   # GET /orders.json
   def index

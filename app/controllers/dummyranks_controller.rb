@@ -1,6 +1,19 @@
 class DummyranksController < ApplicationController
   before_action :set_dummyrank, only: [:show, :edit, :update, :destroy]
 
+  def rank
+    #더미데이터를 넣겠음
+    #Dummyarr = []
+    #Dummyarr.each { |a| puts a }
+    #Dummyrank.create(rankname:"#트와이스","")
+
+      @rank = Dummyrank.order(created_at: :asc).limit(10)
+      #수정해야함 일단 예시로 담음
+  end
+
+
+
+
   # GET /dummyranks
   # GET /dummyranks.json
   def index
