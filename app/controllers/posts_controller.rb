@@ -63,46 +63,6 @@ class PostsController < ApplicationController
 
 
 
-
-
-
-  def buy
-
-    @orderform=Order.new
-    @orderform.rcp_name = params[:rcp_name]
-    @orderform.rcp_email = params[:rcp_email]
-    @orderform.del_tel_num = params[:tel1]+params[:tel2]+params[:tel3]
-    @orderform.del_addr = params[:del_addr]
-    @orderform.detail_addr = params[:detail_addr]
-    @orderform.del_msg = params[:dmessage]
-    @orderform.post_code = params[:post_code]
-    @orderform.post_id = params[:id]
-    @orderform.user_id = current_user.id
-    if params[:op]
-      puts "****************"
-      puts params[:op]
-      @orderform.options = params[:op]
-
-    # @orderform.options = params[:op]
-    end
-
-    total_pay = 0
-    #가격
-    params[:op].each do |key, value|
-      puts "***********"
-      total_pay += @post.option_price[key].to_i * value.to_i
-    end
-
-    @orderform.total_pay = total_pay #totalpay 계산
-    @orderform.del_pay = 2500
-    @orderform.or_time = Date.today
-    @orderform.pay_time = Date.today
-    @orderform.amount = params[:amount]
-    @orderform.invoice_code = params[:invoice_code]
-    @orderform.save
-
-  end
-
   def new
     @post = Post.new
   end
