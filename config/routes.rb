@@ -18,13 +18,14 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   get 'posts/group' => 'posts#group'
-  get 'posts/mypage' => 'posts#mypage'
 
-  get 'posts/rank' => 'posts#rank'
+
   post 'posts/:id/order' => 'posts#order'
-  post 'posts/:id/buy' => 'posts#buy'
-  post 'posts/:id/admin' => 'posts#admin'
+  post 'posts/:id/buy' => 'orders#buy'
+  post 'posts/:id/admin' => 'orders#admin'
 
+  get 'admins/mypage' => 'admins#mypage'
+  get 'ranks/rank' => 'ranks#rank'
   #안드로이드 코드
   get '/sendData/:money/:name'=> 'posts#read'
 
